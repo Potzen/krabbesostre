@@ -6,7 +6,9 @@ op på en hvilken som helst webhost, så virker den.
 ```
 index.html          forsiden
 nytaarskasse.html   nytårskassen
-stil.css            designsystemet, deles af begge sider
+kontrolrapport.html fødevarekontrollen, lovpligtig visning af smileyrapporten
+stil.css            designsystemet, deles af alle sider
+dokumenter/         kontrolrapporten som PDF
 billeder/           optimerede WebP billeder
 fonts/              Archivo og Newsreader (variable, hostet lokalt)
 licenser/           SIL Open Font License for begge skrifter
@@ -75,6 +77,18 @@ i modsætning til billedbåndene på forsiden. Reglen er `.nat .band img`.
 
 Levering: hele Danmark for 150 kr., undtagen øer uden broforbindelse. Det står
 tre steder på siden, og der er ingen afhentning på Thorupstrandvej.
+
+## Fødevarekontrollen
+
+Smileyrapporten skal være tilgængelig for gæsterne. Den ligger på
+kontrolrapport.html, og der er link til siden i footeren på alle sider.
+Selve arket vises som billede, `billeder/kontrolrapport.webp`, og kan
+hentes som PDF i `dokumenter/kontrolrapport.pdf`.
+
+Den viste rapport er fra 22. juli 2025. Når I får en ny kontrol, skal
+begge filer skiftes ud: læg den nye PDF i dokumenter/ og lav et nyt
+billede af den til billeder/. Alt-teksten på billedet nævner dato og
+smiley, så den skal også rettes.
 
 ## Kortet
 
