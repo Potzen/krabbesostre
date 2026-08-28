@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Legeplads | Krabbesøstre</title>
+<meta name="description" content="Testside. Her prøver vi ideer af, før noget af det kommer på den rigtige hjemmeside.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F2E9">
+
+<link rel="preload" as="font" type="font/woff2" href="fonts/archivo-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-var.woff2" crossorigin>
+<link rel="icon" type="image/png" sizes="64x64" href="billeder/favicon.png">
+<link rel="stylesheet" href="stil.css">
+
+<style>
+/* ============================================================
+   Alt herunder hører KUN til testsiden. Intet af det rører
+   forsiden eller nytårssiden, før vi vælger noget ud.
+   ============================================================ */
+
+.t-top{padding-top:clamp(5.75rem,11vw,8rem);padding-bottom:clamp(2rem,4vw,3rem)}
+.t-top h1{font-size:clamp(1.9rem,4.4vw,3.25rem);margin-bottom:1rem}
+.t-top p{max-width:52ch;color:var(--ink-soft)}
+
+.t-sek{
+  padding-block:clamp(3.5rem,8vw,7rem);
+  border-top:var(--rule) solid var(--line);
+}
+.t-sek:nth-of-type(even){background:var(--paper-2)}
+.t-nr{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--crab);margin:0 0 1rem;
+}
+.t-sek h2{font-size:clamp(1.6rem,3.6vw,2.6rem);margin-bottom:.9rem}
+.t-om{max-width:56ch;color:var(--ink-soft);font-size:1rem;line-height:1.6}
+.t-scene{margin-top:clamp(2rem,4vw,3rem)}
+.t-vaerktoej{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;
+  margin-top:1.75rem;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.t-knap{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.7rem 1.2rem;border:1px solid var(--line);background:transparent;
+  color:var(--ink);cursor:pointer;transition:background .3s,color .3s;
+}
+.t-knap:hover{background:var(--ink);color:var(--paper)}
+.t-skyder{accent-color:var(--crab);width:min(18rem,60vw)}
+
+/* ---------- 1. KNÆK KLØEN ---------- */
+.klo-scene{display:flex;flex-direction:column;align-items:center;text-align:center}
+.klo{
+  -webkit-appearance:none;appearance:none;
+  background:none;border:0;padding:0;margin:0;
+  cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  width:min(30rem,86vw);
+}
+.klo svg{width:100%;height:auto;display:block;overflow:visible}
+.klo__skal{fill:var(--paper);stroke:var(--crab);stroke-width:5;stroke-linejoin:round}
+.klo__linje{fill:none;stroke:var(--crab);stroke-width:2.8;stroke-linecap:round}
+.klo__revne{
+  fill:none;stroke:var(--crab);stroke-width:3.4;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.9;
+}
+.klo__koed{opacity:0;transition:opacity .5s ease .1s}
+.klo__koed-fyld{fill:#E7A48E}
+.klo__koed-traad{fill:none;stroke:#F3D4C6;stroke-width:2.8;stroke-linecap:round;opacity:.85}
+.klo__halv{transform-box:view-box;transform-origin:157px 188px;transition:transform 0s}
+.klo__skal-stykke{opacity:0}
+
+.klo.er-knaekket .klo__koed{opacity:1}
+.klo.er-knaekket .klo__revne{opacity:0;transition:opacity .3s ease}
+.klo.er-knaekket .klo__halv{transition:transform 1s cubic-bezier(.18,.9,.24,1)}
+.klo.er-knaekket .klo__halv--over{transform:translate(44px,-31px) rotate(7deg)}
+.klo.er-knaekket .klo__halv--under{transform:translate(-31px,22px) rotate(-5deg)}
+.klo.er-knaekket .klo__skal-stykke{animation:flyv .95s cubic-bezier(.2,.7,.3,1) forwards}
+.klo.er-knaekket .klo__skal-stykke:nth-child(2){animation-delay:.03s}
+.klo.er-knaekket .klo__skal-stykke:nth-child(3){animation-delay:.06s}
+.klo.er-knaekket .klo__skal-stykke:nth-child(4){animation-delay:.02s}
+.klo.er-knaekket .klo__skal-stykke:nth-child(5){animation-delay:.08s}
+@keyframes flyv{
+  0%  {opacity:1;transform:translate(0,0) rotate(0)}
+  100%{opacity:0;transform:translate(var(--fx),var(--fy)) rotate(var(--fr))}
+}
+.klo__stykke{fill:var(--paper);stroke:var(--crab);stroke-width:3}
+
+.klo-hjaelp{
+  margin-top:1.25rem;min-height:2.2em;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 500;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  transition:opacity .4s;
+}
+.klo-gevinst{
+  margin-top:.4rem;
+  font-family:var(--text);font-size:clamp(1.3rem,3vw,2rem);
+  font-weight:300;font-style:italic;color:var(--ink);
+  opacity:0;transform:translateY(.6rem);
+  transition:opacity .8s ease .35s,transform .8s ease .35s;
+}
+.klo-scene.faerdig .klo-gevinst{opacity:1;transform:none}
+
+/* ---------- 2. HAVET ---------- */
+.hav-ramme{position:relative;border:var(--rule) solid var(--line);overflow:hidden;background:#0b1a2a}
+.hav-ramme canvas{display:block;width:100%;height:clamp(16rem,42vh,26rem)}
+.hav-tid{
+  position:absolute;left:0;bottom:0;padding:.6rem 1rem;
+  background:rgba(12,14,18,.55);color:#fff;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 500;
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+
+/* ---------- 3. RALIMA ---------- */
+.ral{text-align:center;padding-block:clamp(1rem,3vw,2rem)}
+.ral__ord{
+  display:flex;justify-content:center;align-items:baseline;
+  gap:0;line-height:.9;
+}
+.ral__del{
+  font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 700;
+  font-size:clamp(2.75rem,11vw,7rem);letter-spacing:-.01em;
+  color:var(--ink);cursor:default;
+  transform:translateX(var(--spredt,0));
+  transition:transform 1.1s cubic-bezier(.2,.8,.2,1),opacity .45s,color .45s;
+}
+.ral__del:nth-child(1){--spredt:-2.5em}
+.ral__del:nth-child(3){--spredt:2.5em}
+.ral.samlet .ral__del{--spredt:0em}
+.ral__navne{
+  display:flex;justify-content:center;gap:clamp(1rem,5vw,3.5rem);
+  margin-top:1.5rem;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.ral__navn{opacity:.35;transition:opacity .4s,color .4s}
+.ral__navn.frem{opacity:1;color:var(--crab)}
+.ral.dæmpet .ral__del:not(.frem){opacity:.22}
+.ral__del.frem{color:var(--crab)}
+.ral__fod{
+  margin-top:clamp(1.5rem,3vw,2.25rem);color:var(--ink-soft);
+  font-size:.98rem;opacity:0;transition:opacity .8s ease .5s;
+}
+.ral.samlet .ral__fod{opacity:1}
+
+/* ---------- 4. BORDET ---------- */
+.bord-rulle{height:220vh;position:relative}
+.bord-fast{
+  position:sticky;top:0;height:100vh;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.bord-flade{position:relative;width:min(52rem,92vw);aspect-ratio:4/3}
+.bord-flade>img.bord-dug{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.bord-ting{
+  position:absolute;width:26%;border-radius:50%;
+  box-shadow:0 1.5rem 3rem rgba(20,19,14,.28);
+  will-change:transform,opacity;
+}
+.bord-maal{
+  position:absolute;left:0;right:0;bottom:1rem;text-align:center;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 500;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--paper);text-shadow:0 1px 6px rgba(0,0,0,.6);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .klo__halv,.klo__koed,.ral__del,.klo-gevinst{transition-duration:.01ms}
+  .klo.er-knaekket .klo__skal-stykke{animation:none;opacity:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#indhold">Spring til indhold</a>
+
+<header class="header is-stuck">
+  <a class="header__brand" href="index.html" aria-label="Krabbesøstre, til forsiden">
+    <span class="header__crab" aria-hidden="true">
+      <img class="krabbe-lys" src="billeder/krabbe-lys.webp" alt="" width="120" height="120">
+      <img class="krabbe-rod" src="billeder/krabbe.webp" alt="" width="120" height="120">
+    </span>
+    <span class="header__mark">Krabbesøstre</span>
+  </a>
+  <nav class="nav" aria-label="Hovedmenu">
+    <a href="index.html">Forsiden</a>
+    <a href="nytaarskasse.html">Nytårskasse</a>
+  </nav>
+</header>
+
+<main id="indhold">
+
+<section class="t-top">
+  <div class="wrap">
+    <p class="t-nr">Legeplads</p>
+    <h1>Fire ideer til afprøvning</h1>
+    <p>Denne side er kun til os. Den er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være. Prøv de fire ting af herunder og sig, hvad der virker, hvad der skal skrues på, og hvad der kan smides væk. Først når vi er enige, flytter jeg noget af det over på den rigtige side.</p>
+  </div>
+</section>
+
+<!-- ============ 1. KNÆK KLØEN ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Idé 01</p>
+    <h2>Knæk kløen</h2>
+    <p class="t-om">Tryk på kløen og <b>hold fingeren nede</b>. Skallen begynder at sitre, og revnen kravler frem. Slipper du for tidligt, heler den. Holder du ved, giver den slip. På mobil holder du bare fingeren på skærmen. Med tastatur: giv kloen fokus og hold mellemrumstasten nede.</p>
+
+    <div class="t-scene klo-scene" id="kloScene">
+      <button class="klo" id="klo" type="button" aria-describedby="kloHjaelp">
+        <span class="visuelt-skjult" style="position:absolute;left:-9999px">Krabbeklo. Tryk og hold for at knække den.</span>
+        <svg viewBox="0 0 400 320" aria-hidden="true">
+          <defs>
+            <g id="kloTegning">
+              <path class="klo__skal" d="M 325.5,64.8 C 326.4,64.9 329.1,64.8 330.5,65.4 C 331.9,66.0 333.2,67.3 333.9,68.5 C 334.7,69.7 335.1,71.1 334.9,72.5 C 334.8,73.9 344.4,64.3 333.0,77.0 C 321.7,89.7 274.2,136.8 267.0,148.9 C 259.8,161.1 278.2,148.6 290.0,149.8 C 301.8,151.1 328.5,154.4 337.5,156.3 C 346.5,158.3 343.2,159.5 343.8,161.5 C 344.4,163.5 348.0,163.6 341.0,168.4 C 334.0,173.1 314.4,183.8 301.5,190.0 C 288.6,196.2 276.2,201.1 263.5,205.4 C 250.8,209.6 234.2,213.9 225.5,215.5 C 216.8,217.2 216.2,213.1 211.0,215.6 C 205.8,218.0 202.8,224.0 194.0,230.4 C 185.2,236.9 169.8,247.9 158.5,254.4 C 147.2,260.9 135.7,265.7 126.5,269.2 C 117.3,272.7 110.8,274.8 103.5,275.7 C 96.2,276.5 89.6,273.1 83.0,274.0 C 76.4,274.9 69.1,280.1 64.0,280.9 C 58.9,281.7 55.8,280.4 52.5,279.0 C 49.2,277.6 46.4,275.2 44.2,272.5 C 42.0,269.8 40.2,266.1 39.5,262.5 C 38.7,258.9 38.1,255.9 39.9,251.0 C 41.6,246.1 47.8,239.5 49.9,233.0 C 52.0,226.5 50.3,218.9 52.3,212.0 C 54.4,205.1 57.6,199.4 62.3,191.5 C 67.0,183.6 73.4,172.7 80.6,164.5 C 87.8,156.3 97.7,148.6 105.5,142.2 C 113.3,135.7 116.7,131.8 127.5,125.8 C 138.3,119.7 159.2,110.0 170.5,105.9 C 181.8,101.8 186.7,101.7 195.0,101.0 C 203.3,100.4 208.1,105.3 220.5,101.9 C 232.9,98.5 252.1,86.7 269.5,80.5 C 286.9,74.4 315.7,67.5 325.0,64.9 C 334.3,62.3 324.6,64.8 325.5,64.8 Z"/>
+              <g clip-path="url(#klipSkal)">
+                <path class="klo__linje" d="M 78,198 C 112,166 158,146 202,140"/>
+                <path class="klo__linje" d="M 92,244 C 130,258 176,248 210,226"/>
+                <circle class="klo__linje" cx="122" cy="214" r="4.5"/>
+                <circle class="klo__linje" cx="158" cy="234" r="3.8"/>
+                <circle class="klo__linje" cx="180" cy="196" r="3.4"/>
+              </g>
+            </g>
+            <clipPath id="klipSkal">
+              <path d="M 325.5,64.8 C 326.4,64.9 329.1,64.8 330.5,65.4 C 331.9,66.0 333.2,67.3 333.9,68.5 C 334.7,69.7 335.1,71.1 334.9,72.5 C 334.8,73.9 344.4,64.3 333.0,77.0 C 321.7,89.7 274.2,136.8 267.0,148.9 C 259.8,161.1 278.2,148.6 290.0,149.8 C 301.8,151.1 328.5,154.4 337.5,156.3 C 346.5,158.3 343.2,159.5 343.8,161.5 C 344.4,163.5 348.0,163.6 341.0,168.4 C 334.0,173.1 314.4,183.8 301.5,190.0 C 288.6,196.2 276.2,201.1 263.5,205.4 C 250.8,209.6 234.2,213.9 225.5,215.5 C 216.8,217.2 216.2,213.1 211.0,215.6 C 205.8,218.0 202.8,224.0 194.0,230.4 C 185.2,236.9 169.8,247.9 158.5,254.4 C 147.2,260.9 135.7,265.7 126.5,269.2 C 117.3,272.7 110.8,274.8 103.5,275.7 C 96.2,276.5 89.6,273.1 83.0,274.0 C 76.4,274.9 69.1,280.1 64.0,280.9 C 58.9,281.7 55.8,280.4 52.5,279.0 C 49.2,277.6 46.4,275.2 44.2,272.5 C 42.0,269.8 40.2,266.1 39.5,262.5 C 38.7,258.9 38.1,255.9 39.9,251.0 C 41.6,246.1 47.8,239.5 49.9,233.0 C 52.0,226.5 50.3,218.9 52.3,212.0 C 54.4,205.1 57.6,199.4 62.3,191.5 C 67.0,183.6 73.4,172.7 80.6,164.5 C 87.8,156.3 97.7,148.6 105.5,142.2 C 113.3,135.7 116.7,131.8 127.5,125.8 C 138.3,119.7 159.2,110.0 170.5,105.9 C 181.8,101.8 186.7,101.7 195.0,101.0 C 203.3,100.4 208.1,105.3 220.5,101.9 C 232.9,98.5 252.1,86.7 269.5,80.5 C 286.9,74.4 315.7,67.5 325.0,64.9 C 334.3,62.3 324.6,64.8 325.5,64.8 Z"/>
+            </clipPath>
+            <!-- de to halvdele, delt langs revnen -->
+            <clipPath id="klipOver">
+              <path d="M 33,12 L 114,127 L 123,149 L 146,161 L 149,189 L 174,202 L 178,228 L 200,249 L 292,380 L 700,380 L 700,-100 Z"/>
+            </clipPath>
+            <clipPath id="klipUnder">
+              <path d="M 33,12 L 114,127 L 123,149 L 146,161 L 149,189 L 174,202 L 178,228 L 200,249 L 292,380 L 292,700 L -400,700 L -400,12 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- kødet, ligger bagved og kommer til syne når skallen giver slip -->
+          <g class="klo__koed">
+            <ellipse class="klo__koed-fyld" cx="157" cy="188" rx="34" ry="74" transform="rotate(55 157 188)"/>
+            <path class="klo__koed-traad" d="M 134,156 C 148,168 156,182 162,196"/>
+            <path class="klo__koed-traad" d="M 150,150 C 164,164 172,180 178,194"/>
+            <path class="klo__koed-traad" d="M 142,186 C 154,198 162,212 166,226"/>
+          </g>
+
+          <g class="klo__halv klo__halv--under" clip-path="url(#klipUnder)"><use href="#kloTegning"/></g>
+          <g class="klo__halv klo__halv--over"  clip-path="url(#klipOver)"><use href="#kloTegning"/></g>
+
+          <g clip-path="url(#klipSkal)">
+            <path class="klo__revne" id="kloRevne" d="M 114,127 L 123,149 L 146,161 L 149,189 L 174,202 L 178,228 L 200,249"/>
+          </g>
+
+          <g class="klo__skaller">
+            <path class="klo__stykke klo__skal-stykke" style="--fx:46px;--fy:-52px;--fr:52deg"  d="M 152,150 l 16,5 l -6,14 z"/>
+            <path class="klo__stykke klo__skal-stykke" style="--fx:64px;--fy:-16px;--fr:-38deg" d="M 180,196 l 18,3 l -8,15 z"/>
+            <path class="klo__stykke klo__skal-stykke" style="--fx:-44px;--fy:44px;--fr:64deg"  d="M 132,196 l -16,7 l 3,-16 z"/>
+            <path class="klo__stykke klo__skal-stykke" style="--fx:-58px;--fy:12px;--fr:-46deg" d="M 124,162 l -15,4 l 5,-15 z"/>
+            <path class="klo__stykke klo__skal-stykke" style="--fx:22px;--fy:62px;--fr:38deg"   d="M 176,232 l 14,9 l -15,7 z"/>
+          </g>
+        </svg>
+      </button>
+
+      <p class="klo-hjaelp" id="kloHjaelp">Tryk og hold</p>
+      <p class="klo-gevinst">Den smager af eftermiddag.</p>
+      <p role="status" aria-live="polite" class="visuelt-skjult" id="kloStatus" style="position:absolute;left:-9999px"></p>
+    </div>
+
+    <div class="t-vaerktoej">
+      <button class="t-knap" type="button" id="kloNulstil">Sæt sammen igen</button>
+      <label><input type="checkbox" id="kloLyd"> Lyd på knækket</label>
+      <span id="kloTid"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. HAVET ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Idé 02</p>
+    <h2>Det levende hav</h2>
+    <p class="t-om">Havet tegnes levende i browseren, ikke som en video. Farven følger solens faktiske stand over Thorupstrand på gæstens eget ur. Træk i skyderen for at se et helt døgn: daggry, middag, skumring, nat. Før musen hen over havet, så trækker bølgerne en anelse efter.</p>
+
+    <div class="t-scene hav-ramme">
+      <canvas id="hav"></canvas>
+      <div class="hav-tid" id="havTid"></div>
+    </div>
+
+    <div class="t-vaerktoej">
+      <label>Tidspunkt <input class="t-skyder" type="range" id="havSkyder" min="0" max="1439" step="5"></label>
+      <button class="t-knap" type="button" id="havNu">Tilbage til nu</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. RALIMA ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Idé 03</p>
+    <h2>Ralima, navnet</h2>
+    <p class="t-om">De tre stavelser ligger spredt og glider sammen til ét navn, når man ruller dertil. Peger man på en stavelse, træder søsteren bag den frem. På mobil trykker man i stedet.</p>
+
+    <div class="t-scene ral" id="ral">
+      <div class="ral__ord">
+        <span class="ral__del" data-navn="Ragnhild">Ra</span>
+        <span class="ral__del" data-navn="Lili">li</span>
+        <span class="ral__del" data-navn="Maiken">ma</span>
+      </div>
+      <div class="ral__navne">
+        <span class="ral__navn">Ragnhild</span>
+        <span class="ral__navn">Lili</span>
+        <span class="ral__navn">Maiken</span>
+      </div>
+      <p class="ral__fod">Kutteren <em>Ralima</em>, HM 323. Mor og de to døtre, skrevet sammen til ét navn og malet på siden af en båd.</p>
+    </div>
+
+    <div class="t-vaerktoej">
+      <button class="t-knap" type="button" id="ralIgen">Spil igen</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. BORDET ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Idé 04</p>
+    <h2>Bordet dækker sig selv</h2>
+    <p class="t-om">Dette er en <b>grov skitse</b>, ikke det færdige. Den bruger de billeder, vi har, hvor retterne stadig ligger på deres egen baggrund. Skal det se rigtigt ud, kræver det nye fotos, hvor hver enkelt ting er taget for sig og klippet fri. Rul langsomt gennem afsnittet herunder, så lander de tre retter på bordet.</p>
+  </div>
+
+  <div class="bord-rulle" id="bordRulle">
+    <div class="bord-fast">
+      <div class="bord-flade">
+        <img class="bord-dug" src="billeder/borddaekning.webp" alt="Dækket bord" width="1500" height="1125" loading="lazy">
+        <img class="bord-ting" id="ting1" src="billeder/krabbeklor.webp" alt="" width="1100" height="1100" loading="lazy">
+        <img class="bord-ting" id="ting2" src="billeder/rejer.webp" alt="" width="832" height="832" loading="lazy">
+        <img class="bord-ting" id="ting3" src="billeder/sild.webp" alt="" width="1100" height="1466" loading="lazy">
+        <p class="bord-maal" id="bordMaal">Rul videre</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__legal" style="border-top:1px solid rgba(246,242,233,.16);padding-top:2rem">
+      <span>Testside, ikke en del af hjemmesiden</span>
+      <span><a href="index.html">Tilbage til forsiden</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var roligt = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ==========================================================
+     1. KNÆK KLØEN
+     ========================================================== */
+  (function(){
+    var klo    = document.getElementById("klo");
+    var scene  = document.getElementById("kloScene");
+    var revne  = document.getElementById("kloRevne");
+    var hjaelp = document.getElementById("kloHjaelp");
+    var status = document.getElementById("kloStatus");
+    var visTid = document.getElementById("kloTid");
+    var lydTil = document.getElementById("kloLyd");
+    if (!klo) return;
+
+    var laengde = revne.getTotalLength();
+    revne.style.strokeDasharray  = laengde;
+    revne.style.strokeDashoffset = laengde;
+
+    var VARIGHED = 1250;          // så længe skal man holde
+    var p = 0, holder = false, raf = null, sidst = 0, knaekket = false, start = 0;
+
+    function tegn(){
+      revne.style.strokeDashoffset = laengde * (1 - p);
+      if (roligt) return;
+      var r = p * p * 3.2;                       // rysten vokser med presset
+      var x = (Math.random()*2-1) * r;
+      var y = (Math.random()*2-1) * r;
+      var v = (Math.random()*2-1) * r * 0.18;
+      klo.style.transform = "translate("+x.toFixed(2)+"px,"+y.toFixed(2)+"px) rotate("+v.toFixed(2)+"deg) scale("+(1 - p*0.012).toFixed(4)+")";
+    }
+
+    function tik(t){
+      if (!sidst) sidst = t;
+      var dt = Math.min(t - sidst, 50); sidst = t;
+      p += holder ? dt/VARIGHED : -dt/(VARIGHED*0.45);
+      if (p >= 1){ p = 1; tegn(); knaek(); return; }
+      if (p <= 0 && !holder){ p = 0; tegn(); klo.style.transform=""; raf=null; sidst=0; return; }
+      if (p < 0) p = 0;
+      tegn();
+      raf = requestAnimationFrame(tik);
+    }
+
+    function igang(){
+      if (knaekket) return;
+      if (roligt){ knaek(); return; }
+      holder = true; sidst = 0; start = performance.now();
+      hjaelp.textContent = "Bliv ved";
+      if (!raf) raf = requestAnimationFrame(tik);
+    }
+    function slip(){
+      if (knaekket || !holder) return;
+      holder = false; sidst = 0;
+      hjaelp.textContent = p > .35 ? "Så tæt på" : "Tryk og hold";
+      if (!raf) raf = requestAnimationFrame(tik);
+    }
+
+    function knaek(){
+      knaekket = true; holder = false;
+      if (raf){ cancelAnimationFrame(raf); raf = null; }
+      klo.style.transform = "";
+      klo.classList.add("er-knaekket");
+      scene.classList.add("faerdig");
+      hjaelp.style.opacity = "0";
+      status.textContent = "Kløen er knækket.";
+      if (start) visTid.textContent = "Du holdt " + ((performance.now()-start)/1000).toFixed(1) + " sekunder";
+      if (lydTil.checked) lyd();
+    }
+
+    function nulstil(){
+      knaekket = false; holder = false; p = 0; sidst = 0;
+      if (raf){ cancelAnimationFrame(raf); raf = null; }
+      klo.classList.remove("er-knaekket");
+      scene.classList.remove("faerdig");
+      klo.style.transform = "";
+      hjaelp.style.opacity = "";
+      hjaelp.textContent = "Tryk og hold";
+      status.textContent = "";
+      visTid.textContent = "";
+      revne.style.strokeDashoffset = laengde;
+    }
+
+    /* et tørt knæk, lavet i browseren. Ingen lydfil skal hentes. */
+    var ac = null;
+    function lyd(){
+      try{
+        ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+        var n = ac.sampleRate * 0.18;
+        var buf = ac.createBuffer(1, n, ac.sampleRate);
+        var data = buf.getChannelData(0);
+        for (var i=0;i<n;i++){
+          var t = i/n;
+          data[i] = (Math.random()*2-1) * Math.pow(1-t, 9);
+        }
+        var kilde = ac.createBufferSource(); kilde.buffer = buf;
+        var filter = ac.createBiquadFilter();
+        filter.type = "bandpass"; filter.frequency.value = 2100; filter.Q.value = 1.1;
+        var g = ac.createGain(); g.gain.value = 0.55;
+        kilde.connect(filter); filter.connect(g); g.connect(ac.destination);
+        kilde.start();
+
+        var o = ac.createOscillator(), og = ac.createGain();
+        o.type = "sine"; o.frequency.setValueAtTime(150, ac.currentTime);
+        o.frequency.exponentialRampToValueAtTime(48, ac.currentTime+0.13);
+        og.gain.setValueAtTime(0.32, ac.currentTime);
+        og.gain.exponentialRampToValueAtTime(0.001, ac.currentTime+0.16);
+        o.connect(og); og.connect(ac.destination);
+        o.start(); o.stop(ac.currentTime+0.18);
+      }catch(e){}
+    }
+
+    klo.addEventListener("pointerdown", function(e){ e.preventDefault(); igang(); });
+    addEventListener("pointerup", slip);
+    addEventListener("pointercancel", slip);
+    klo.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+    klo.addEventListener("keydown", function(e){
+      if (e.key === " " || e.key === "Enter"){ e.preventDefault(); if (!holder) igang(); }
+    });
+    klo.addEventListener("keyup", function(e){
+      if (e.key === " " || e.key === "Enter"){ e.preventDefault(); slip(); }
+    });
+    document.getElementById("kloNulstil").addEventListener("click", nulstil);
+  })();
+
+  /* ==========================================================
+     2. DET LEVENDE HAV
+     ========================================================== */
+  (function(){
+    var c = document.getElementById("hav");
+    if (!c) return;
+    var ctx = c.getContext("2d");
+    var visTid = document.getElementById("havTid");
+    var skyder = document.getElementById("havSkyder");
+    var b, h, dpr = Math.min(devicePixelRatio||1, 2);
+    var minutter = null;                 // null = brug uret lige nu
+    var mx = 0.5;
+
+    function maal(){
+      var r = c.getBoundingClientRect();
+      b = c.width  = Math.round(r.width  * dpr);
+      h = c.height = Math.round(r.height * dpr);
+    }
+
+    /* solens højde over Thorupstrand, 57,23 grader nord, 9,02 grader øst */
+    function solhoejde(min){
+      var nu = new Date();
+      var start = new Date(nu.getFullYear(), 0, 0);
+      var dag = Math.floor((nu - start) / 86400000);
+      var decl = 23.44 * Math.PI/180 * Math.sin(2*Math.PI*(dag-81)/365);
+      var phi  = 57.23 * Math.PI/180;
+      var soltid = min/60 + 9.02/15 - (nu.getTimezoneOffset()/-60);
+      var H = (soltid - 12) * 15 * Math.PI/180;
+      return Math.asin(Math.sin(phi)*Math.sin(decl) + Math.cos(phi)*Math.cos(decl)*Math.cos(H)) * 180/Math.PI;
+    }
+
+    function bland(a, c2, t){
+      return [Math.round(a[0]+(c2[0]-a[0])*t), Math.round(a[1]+(c2[1]-a[1])*t), Math.round(a[2]+(c2[2]-a[2])*t)];
+    }
+    function rgb(a, o){ return "rgba("+a[0]+","+a[1]+","+a[2]+","+(o===undefined?1:o)+")"; }
+
+    /* paletter efter solhøjde: nat, skumring, gylden, morgen, dag */
+    var trin = [
+      {alt:-18, top:[8,12,26],   bund:[18,26,48],  havN:[10,16,32], havF:[16,24,44], sol:[214,220,236]},
+      {alt:-6,  top:[26,34,66],  bund:[92,74,96],  havN:[20,28,50], havF:[42,44,72], sol:[236,214,190]},
+      {alt:0,   top:[74,86,128], bund:[236,158,110],havN:[46,54,80], havF:[168,120,104],sol:[252,196,132]},
+      {alt:10,  top:[126,164,206],bund:[226,206,182],havN:[52,86,116],havF:[150,156,158],sol:[254,232,190]},
+      {alt:40,  top:[126,176,220],bund:[196,214,226],havN:[38,84,118],havF:[122,152,166],sol:[255,250,235]}
+    ];
+    function palet(alt){
+      if (alt <= trin[0].alt) return trin[0];
+      for (var i=0;i<trin.length-1;i++){
+        if (alt <= trin[i+1].alt){
+          var t = (alt - trin[i].alt) / (trin[i+1].alt - trin[i].alt);
+          var a = trin[i], b2 = trin[i+1];
+          return {top:bland(a.top,b2.top,t), bund:bland(a.bund,b2.bund,t),
+                  havN:bland(a.havN,b2.havN,t), havF:bland(a.havF,b2.havF,t),
+                  sol:bland(a.sol,b2.sol,t)};
+        }
+      }
+      return trin[trin.length-1];
+    }
+
+    function tegn(tid){
+      var nu = new Date();
+      var min = minutter === null ? nu.getHours()*60 + nu.getMinutes() : minutter;
+      var alt = solhoejde(min);
+      var pa = palet(alt);
+      var hori = h * 0.46;
+
+      var himmel = ctx.createLinearGradient(0,0,0,hori);
+      himmel.addColorStop(0, rgb(pa.top));
+      himmel.addColorStop(1, rgb(pa.bund));
+      ctx.fillStyle = himmel; ctx.fillRect(0,0,b,hori);
+
+      /* sol eller måne, følger døgnet hen over himlen */
+      var solX = b * ((min/1440 + 0.25) % 1);
+      var solY = hori - (alt/50) * hori * 0.9;
+      var glans = ctx.createRadialGradient(solX,solY,0,solX,solY,h*0.30);
+      glans.addColorStop(0, rgb(pa.sol,.75));
+      glans.addColorStop(1, rgb(pa.sol,0));
+      ctx.fillStyle = glans; ctx.fillRect(0,0,b,hori);
+      if (solY < hori){
+        ctx.beginPath(); ctx.arc(solX, solY, h*0.035, 0, Math.PI*2);
+        ctx.fillStyle = rgb(pa.sol,.95); ctx.fill();
+      }
+
+      /* stjerner når solen er langt nede */
+      if (alt < -8){
+        var styrke = Math.min((-alt-8)/8, 1);
+        for (var s=0;s<70;s++){
+          var sx = ((s*97)%100)/100*b, sy = ((s*53)%100)/100*hori*0.92;
+          var blink = 0.4 + 0.6*Math.abs(Math.sin(tid/900 + s));
+          ctx.fillStyle = "rgba(240,244,255,"+(styrke*blink*0.7).toFixed(3)+")";
+          ctx.fillRect(sx, sy, 1.6*dpr, 1.6*dpr);
+        }
+      }
+
+      var hav = ctx.createLinearGradient(0,hori,0,h);
+      hav.addColorStop(0, rgb(pa.havF));
+      hav.addColorStop(1, rgb(pa.havN));
+      ctx.fillStyle = hav; ctx.fillRect(0,hori,b,h-hori);
+
+      /* solstribe på vandet */
+      var stribe = ctx.createLinearGradient(0,hori,0,h);
+      stribe.addColorStop(0, rgb(pa.sol,.30));
+      stribe.addColorStop(1, rgb(pa.sol,0));
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(solX - b*0.03, hori);
+      ctx.lineTo(solX + b*0.03, hori);
+      ctx.lineTo(solX + b*0.16, h);
+      ctx.lineTo(solX - b*0.16, h);
+      ctx.closePath();
+      ctx.fillStyle = stribe; ctx.fill();
+      ctx.restore();
+
+      /* bølgerne, lag på lag, tættere og højere jo nærmere man er */
+      var t = tid/1000;
+      for (var l=0; l<9; l++){
+        var f = l/8;
+        var y = hori + Math.pow(f,1.7)*(h-hori);
+        var amp = (1.2 + f*9) * dpr;
+        var fart = 0.25 + f*0.9;
+        var boelge = 0.010 + f*0.022;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        for (var x=0; x<=b; x+=6*dpr){
+          var yy = y
+            + Math.sin(x*boelge/dpr + t*fart + l) * amp
+            + Math.sin(x*boelge*0.41/dpr - t*fart*1.4 + l*2) * amp*0.45
+            + Math.sin(x*0.004/dpr + t*0.2 + mx*3) * amp*0.35;
+          ctx.lineTo(x, yy);
+        }
+        ctx.strokeStyle = rgb(pa.sol, 0.05 + f*0.16);
+        ctx.lineWidth = (0.7 + f*1.1) * dpr;
+        ctx.stroke();
+      }
+
+      var timer = Math.floor(min/60), m2 = Math.floor(min%60);
+      visTid.textContent = (timer<10?"0":"")+timer + ":" + (m2<10?"0":"")+m2 +
+        "  ·  solen " + (alt>=0 ? alt.toFixed(0)+" grader oppe" : Math.abs(alt).toFixed(0)+" grader under horisonten") +
+        (minutter===null ? "  ·  lige nu" : "");
+    }
+
+    maal();
+    addEventListener("resize", maal);
+    c.addEventListener("pointermove", function(e){
+      var r = c.getBoundingClientRect();
+      mx = (e.clientX - r.left)/r.width;
+    });
+    skyder.addEventListener("input", function(){ minutter = +skyder.value; });
+    document.getElementById("havNu").addEventListener("click", function(){
+      minutter = null;
+      var nu = new Date(); skyder.value = nu.getHours()*60 + nu.getMinutes();
+    });
+    var nu0 = new Date(); skyder.value = nu0.getHours()*60 + nu0.getMinutes();
+
+    if (roligt){ tegn(0); }
+    else { (function loop(t){ tegn(t); requestAnimationFrame(loop); })(0); }
+  })();
+
+  /* ==========================================================
+     3. RALIMA
+     ========================================================== */
+  (function(){
+    var ral = document.getElementById("ral");
+    if (!ral) return;
+    var dele  = ral.querySelectorAll(".ral__del");
+    var navne = ral.querySelectorAll(".ral__navn");
+
+    function saml(){ ral.classList.add("samlet"); }
+    if ("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(e){
+        if (e[0].isIntersecting){ saml(); io.disconnect(); }
+      }, {threshold:.5});
+      io.observe(ral);
+    } else saml();
+
+    dele.forEach(function(d, i){
+      function frem(){
+        ral.classList.add("dæmpet");
+        d.classList.add("frem"); navne[i].classList.add("frem");
+      }
+      function ud(){
+        ral.classList.remove("dæmpet");
+        d.classList.remove("frem"); navne[i].classList.remove("frem");
+      }
+      d.addEventListener("pointerenter", frem);
+      d.addEventListener("pointerleave", ud);
+      d.addEventListener("pointerdown", frem);
+      navne[i].addEventListener("pointerenter", frem);
+      navne[i].addEventListener("pointerleave", ud);
+    });
+
+    document.getElementById("ralIgen").addEventListener("click", function(){
+      ral.classList.remove("samlet");
+      setTimeout(saml, 60);
+    });
+  })();
+
+  /* ==========================================================
+     4. BORDET
+     ========================================================== */
+  (function(){
+    var rulle = document.getElementById("bordRulle");
+    if (!rulle) return;
+    var maal = document.getElementById("bordMaal");
+    var ting = [
+      {el: document.getElementById("ting1"), fra:[-70,-60,-40], til:[16,26], start:.05, slut:.45},
+      {el: document.getElementById("ting2"), fra:[80,-50,55],   til:[56,18], start:.20, slut:.62},
+      {el: document.getElementById("ting3"), fra:[10,90,-30],   til:[34,54], start:.36, slut:.80}
+    ];
+
+    function opdater(){
+      var r = rulle.getBoundingClientRect();
+      var samlet = r.height - innerHeight;
+      var p = Math.max(0, Math.min(1, -r.top / (samlet || 1)));
+      ting.forEach(function(t){
+        var f = Math.max(0, Math.min(1, (p - t.start)/(t.slut - t.start)));
+        var e = 1 - Math.pow(1-f, 3);
+        t.el.style.left = t.til[0] + "%";
+        t.el.style.top  = t.til[1] + "%";
+        t.el.style.opacity = f <= 0 ? 0 : Math.min(1, f*2.2);
+        t.el.style.transform =
+          "translate(" + (t.fra[0]*(1-e)).toFixed(1) + "%," + (t.fra[1]*(1-e)).toFixed(1) + "%)" +
+          " rotate(" + (t.fra[2]*(1-e)).toFixed(1) + "deg)" +
+          " scale(" + (0.7 + 0.3*e).toFixed(3) + ")";
+      });
+      maal.textContent = p < .05 ? "Rul videre" : p > .85 ? "Bordet er dækket" : Math.round(p*100) + " procent";
+    }
+    addEventListener("scroll", opdater, {passive:true});
+    addEventListener("resize", opdater);
+    opdater();
+  })();
+
+})();
+</script>
+</body>
+</html>
