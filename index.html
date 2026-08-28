@@ -372,35 +372,88 @@
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"Restaurant",
-  "name":"Krabbesøstre",
-  "url":"https://krabbesostre.dk/",
-  "image":"https://krabbesostre.dk/billeder/og.webp",
-  "description":"Sommerrestaurant i Thorupstrand. Krabbekløer, rejer og røget sild serveret i et gammelt redskabshus hundrede meter fra Vesterhavet.",
-  "servesCuisine":["Seafood","Dansk"],
-  "priceRange":"$$",
-  "telephone":"+4529430052",
-  "acceptsReservations":"https://krabbesostre.dk/bordreservation",
-  "address":{
-    "@type":"PostalAddress",
-    "streetAddress":"Thorupstrandvej 323",
-    "postalCode":"9690",
-    "addressLocality":"Fjerritslev",
-    "addressRegion":"Nordjylland",
-    "addressCountry":"DK"
-  },
-  "hasMenu":{
-    "@type":"Menu",
-    "hasMenuSection":[{
-      "@type":"MenuSection",
-      "name":"Fra havet",
-      "hasMenuItem":[
-        {"@type":"MenuItem","name":"Krabbekløer"},
-        {"@type":"MenuItem","name":"Håndpillede rejer"},
-        {"@type":"MenuItem","name":"Røget sild"}
-      ]
-    }]
-  }
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://krabbesostre.dk/#website",
+      "url":"https://krabbesostre.dk/",
+      "name":"Krabbesøstre",
+      "inLanguage":"da-DK",
+      "publisher":{"@id":"https://krabbesostre.dk/#restaurant"}
+    },
+    {
+      "@type":"Restaurant",
+      "@id":"https://krabbesostre.dk/#restaurant",
+      "name":"Krabbesøstre",
+      "url":"https://krabbesostre.dk/",
+      "description":"Sommerrestaurant i Thorupstrand ved Vesterhavet. Krabbekløer, håndpillede rejer og røget sild serveret i et gammelt redskabshus hundrede meter fra havet, hvor de blev fanget.",
+      "image":[
+        "https://krabbesostre.dk/billeder/og.webp",
+        "https://krabbesostre.dk/billeder/hero.webp",
+        "https://krabbesostre.dk/billeder/krabbeklor.webp",
+        "https://krabbesostre.dk/billeder/sostrene.webp",
+        "https://krabbesostre.dk/billeder/skilt.webp"
+      ],
+      "logo":"https://krabbesostre.dk/billeder/logo.webp",
+      "telephone":"+4529430052",
+      "email":"contact@krabbesostre.dk",
+      "servesCuisine":["Seafood","Dansk"],
+      "priceRange":"$$",
+      "currenciesAccepted":"DKK",
+      "acceptsReservations":"https://krabbesostre.dk/bordreservation",
+      "foundingDate":"2025",
+      "founder":[
+        {"@type":"Person","name":"Ragnhild Gjettermann"},
+        {"@type":"Person","name":"Maiken Gjettermann"}
+      ],
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Thorupstrandvej 323",
+        "postalCode":"9690",
+        "addressLocality":"Fjerritslev",
+        "addressRegion":"Nordjylland",
+        "addressCountry":"DK"
+      },
+      "hasMap":"https://www.google.com/maps/search/?api=1&query=Thorupstrandvej+323%2C+9690+Fjerritslev",
+      "sameAs":[
+        "https://www.instagram.com/krabbesostre/",
+        "https://www.facebook.com/profile.php?id=61577017515069",
+        "https://www.findsmiley.dk/app/1488547"
+      ],
+      "openingHoursSpecification":[{
+        "@type":"OpeningHoursSpecification",
+        "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens":"12:00",
+        "closes":"21:00",
+        "validFrom":"2026-07-04",
+        "validThrough":"2026-08-02"
+      }],
+      "hasMenu":{
+        "@type":"Menu",
+        "name":"Menukortet",
+        "inLanguage":"da-DK",
+        "hasMenuSection":[
+          {
+            "@type":"MenuSection",
+            "name":"Fra havet udenfor",
+            "hasMenuItem":[
+              {"@type":"MenuItem","name":"Krabbekløer","description":"Kogte krabbekløer, en dressing og en kniv. Gæsten knækker selv."},
+              {"@type":"MenuItem","name":"Håndpillede rejer","description":"En skål rejer og en kvist dild, pillet i hånden og ikke i maskine."},
+              {"@type":"MenuItem","name":"Røget sild","description":"Med rå æggeblomme, dressing og radiser. Mormors ret."}
+            ]
+          },
+          {
+            "@type":"MenuSection",
+            "name":"Til sidst",
+            "hasMenuItem":[
+              {"@type":"MenuItem","name":"Valnøddetærte","description":"Med creme fraiche."},
+              {"@type":"MenuItem","name":"Chokoladetærte","description":"Med creme fraiche."}
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }
 </script>
 

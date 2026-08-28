@@ -1,0 +1,66 @@
+# Krabbesøstre, Thorupstrand
+# Alle robotter er velkomne, også dem der henter til AI-svar.
+# Vi vil gerne findes, både i søgemaskiner og når nogen spørger
+# en sprogmodel, hvor man spiser krabber ved Vesterhavet.
+
+User-agent: *
+Allow: /
+
+# Søgemaskiner
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI, både dem der lærer og dem der slår op undervejs
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Råmateriale og værktøj hører ikke til på nettet
+Disallow: /src/
+Disallow: /tools/
+
+Sitemap: https://krabbesostre.dk/sitemap.xml
