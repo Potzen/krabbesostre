@@ -1,9 +1,10 @@
-# Skrifter, der mangler
+# Skrifter
 
-`stil.css` forventer disse tre filer i denne mappe (variable woff2, hostet lokalt):
+De tre variable woff2-filer, som `stil.css` bruger, ligger her:
 
 - `archivo-var.woff2`
 - `newsreader-var.woff2`
 - `newsreader-var-italic.woff2`
 
-Læg filerne her og commit dem, så virker `@font-face`-reglerne i `stil.css`.
+Det, der stadig mangler, er selve licensteksten (SIL Open Font License) for
+begge skrifter, som skal ligge i `../licenser/`.
