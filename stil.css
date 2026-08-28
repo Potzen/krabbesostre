@@ -613,23 +613,33 @@ p:last-child{margin-bottom:0}
    afstand til den faste menulinje. Bruges af kontrolrapporten.
    ============================================================ */
 .enkel{
-  padding-top:clamp(7rem,14vw,10rem);
-  padding-bottom:clamp(4rem,9vw,8rem);
+  padding-top:clamp(5.75rem,11vw,8rem);
+  padding-bottom:clamp(3.5rem,7vw,6rem);
 }
 .enkel h1{
-  font-size:clamp(2.25rem,6.2vw,4.75rem);
-  margin-bottom:clamp(2rem,4vw,3rem);
+  font-size:clamp(1.9rem,4.4vw,3.25rem);
+  margin-bottom:clamp(1.5rem,3vw,2.25rem);
 }
+/* Arket skalerer efter skærmhøjden, ikke bredden, så overskriften bliver
+   stående, når siden åbnes. Hele arket er et link til PDF'en i fuld
+   størrelse, for den, der vil læse det små med. */
 .ark{
-  margin:0;
-  max-width:32rem;
+  display:inline-block;vertical-align:top;margin:0;
+  max-width:100%;
   border:var(--rule) solid var(--line);
   background:#fff;
 }
-.ark img{width:100%;height:auto}
+.ark a{display:block;text-decoration:none}
+.ark img{
+  display:block;
+  width:auto;height:auto;max-width:100%;
+  max-height:clamp(17rem,46vh,26rem);
+  transition:opacity .35s ease;
+}
+.ark a:hover img{opacity:.86}
 .ark__links{
   display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:clamp(1.75rem,3.5vw,2.5rem);
+  margin-top:clamp(1.5rem,3vw,2.25rem);
 }
 
 /* ============================================================
