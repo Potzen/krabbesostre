@@ -8,6 +8,9 @@ index.html          forsiden
 nytaarskasse.html   nytårskassen
 kontrolrapport.html fødevarekontrollen, lovpligtig visning af smileyrapporten
 stil.css            designsystemet, deles af alle sider
+robots.txt          giver alle robotter adgang, også AI, og peger på sitemap
+sitemap.xml         de tre sider, indsendes i Google Search Console
+llms.txt            kort beskrivelse i almindeligt sprog til sprogmodeller
 dokumenter/         kontrolrapporten som PDF
 billeder/           optimerede WebP billeder
 fonts/              Archivo og Newsreader (variable, hostet lokalt)
@@ -89,6 +92,29 @@ Den viste rapport er fra 22. juli 2025. Når I får en ny kontrol, skal
 begge filer skiftes ud: læg den nye PDF i dokumenter/ og lav et nyt
 billede af den til billeder/. Alt-teksten på billedet nævner dato og
 smiley, så den skal også rettes.
+
+## Søgning og indeksering
+
+Hver side erklærer sin egen adresse med `canonical`, og den skal altid passe
+præcist med filnavnet. Erklærer en side en adresse, der ikke findes, risikerer
+den slet ikke at blive indekseret. Det var faktisk tilfældet for nytårssiden og
+kontrolrapporten, indtil det blev rettet.
+
+Nederst på forsiden ligger et afsnit med strukturerede data. Det er den
+usynlige beskrivelse, Google bruger til at vise åbningstider og kort, og som AI
+læser. Tre ting skal holdes ved lige i det:
+
+1. **Åbningstiderne** står med sæsonens datoer under `openingHoursSpecification`.
+   De skal opdateres, når datoerne for næste sommer er på plads. Det samme gælder
+   teksten i `hero__meta` og under Praktisk.
+2. **Spørgsmål og svar** under Praktisk findes to steder: som synlig tekst og som
+   `FAQPage` i de strukturerede data. Retter I det ene, skal I rette det andet,
+   ellers står der noget forskelligt til gæsten og til Google.
+3. **Nytårskassen** er beskrevet som en vare uden pris, fordi prisen ikke er
+   fastsat. Når den er det, sættes et `offers`-afsnit ind med pris og valuta.
+
+Koordinater er bevidst ikke angivet. Adressen er entydig nok til, at Google selv
+finder punktet.
 
 ## Kortet
 
