@@ -933,9 +933,21 @@ p:last-child{margin-bottom:0}
 .smaat--nat h3{color:var(--messing)}
 .smaat--nat p{color:var(--nat-mut)}
 .smaat--nat .eyebrow{color:var(--messing)}
+/* Det store billede vises ubeskåret, men står som en plade midt på siden,
+   ikke i fuld bredde. Højden sætter målet, bredden følger med af sig selv,
+   så et lodret motiv aldrig fylder mere end et skærmbillede. */
 .nat .band img{
-  height:auto;max-height:none;object-fit:contain;
+  width:auto;height:auto;
+  max-width:100%;
+  max-height:min(74vh,42rem);
+  margin-inline:auto;
+  object-fit:contain;
+  border:1px solid var(--nat-linje);
   filter:brightness(.9) saturate(.94);
 }
-.nat .band{position:relative;z-index:1}
+.nat .band{
+  position:relative;z-index:1;
+  padding-inline:var(--pad);
+  padding-block:clamp(2rem,5vw,4rem);
+}
 .nat .band__caption{background:linear-gradient(to top,rgba(11,10,7,.72),transparent)}
