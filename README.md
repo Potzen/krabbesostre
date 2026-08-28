@@ -30,20 +30,24 @@ uden beløb.
 
 ## Skal udfyldes før den går live
 
-1. Bookinglink: alle knapper peger på krabbesostre.dk/bordreservation.
-2. Tilmelding på forsiden: sæt jeres formular-URL ind i `ENDPOINT` nederst i
+1. Tilmelding på forsiden: sæt jeres formular-URL ind i `ENDPOINT` nederst i
    index.html. Så længe den er tom, åbner knappen gæstens mailprogram.
-3. Nytårskassen: `BETALING_NYTAAR` nederst i nytaarskasse.html kan sættes til
-   et Stripe Payment Link eller MobilePay MyShop link. Tomt felt betyder, at
-   bestillingen går gennem formularen og åbner gæstens mailprogram.
-4. Kassens indhold er taget fra menukortet, ikke fra jer. Ret listen.
-5. Leveringsdagen står som "inden nytårsaften". Sæt en konkret dag eller et
+2. Nytårskassen: `BETALING_NYTAAR` nederst i nytaarskasse.html kan sættes til
+   et Stripe Payment Link eller MobilePay MyShop link. Betalingsflowet er
+   endnu ikke sat op, så feltet står tomt, og bestillingen går gennem
+   formularen og åbner gæstens mailprogram.
+3. Kassens indhold er taget fra menukortet, ikke fra jer. Indholdet er endnu
+   ikke besluttet, så listen skal rettes, og der mangler billeder af kassen.
+4. Leveringsdagen står som "inden nytårsaften". Sæt en konkret dag eller et
    tidsrum ind, når I ved, hvornår fragtmanden kører.
 
-Instagram og Facebook er sat ind begge steder i footeren.
+Klaret: Instagram og Facebook peger på jeres egne profiler, telefonnummeret
+står i footeren, og bookinglinket krabbesostre.dk/bordreservation virker.
 
 Kontaktadressen er contact@krabbesostre.dk og står i footeren på begge sider
-samt i begge scripts.
+samt i begge scripts. Bekræft, at det er den rigtige adresse. Telefonnummeret
+29 43 00 52 står i footeren begge steder og i de strukturerede data på
+forsiden.
 
 ## Nytårssiden
 
