@@ -116,6 +116,31 @@ læser. Tre ting skal holdes ved lige i det:
 Koordinater er bevidst ikke angivet. Adressen er entydig nok til, at Google selv
 finder punktet.
 
+## Anmeldelser fra Google
+
+Afsnittet "Sagt ved bordene" på forsiden bygges af
+`tools/hent_anmeldelser.py` ud fra `anmeldelser.json`. Er listen tom,
+vises afsnittet slet ikke. Skriv aldrig anmeldelser i hånden.
+
+    export GOOGLE_API_NOEGLE="..."     nøgle fra Google Cloud, Places API slået til
+    export GOOGLE_PLACE_ID="..."       findes med Googles Place ID Finder
+    python3 tools/hent_anmeldelser.py
+
+Nøglen står kun som miljøvariabel og må aldrig havne i en fil i repoet.
+
+Tre ting at holde sig for øje:
+
+1. **Places API giver højst fem anmeldelser**, og Google vælger selv hvilke.
+   Skal alle med, kræver det Business Profile API, som skal søges hos Google
+   og bruger login frem for nøgle. Visningen er den samme, så det kan bygges
+   ovenpå senere uden at kaste noget væk.
+2. **Anmeldelserne må ikke fryses fast.** Googles vilkår tillader ikke, at
+   deres data gemmes permanent, så scriptet skal køre regelmæssigt, fx en
+   gang i døgnet.
+3. **Stjernerne må ikke i de strukturerede data.** Google forbyder, at man
+   mærker anmeldelser op, som man selv har hentet andetsteds fra, og det kan
+   udløse en straf. Stjernerne i søgeresultatet sætter Google selv.
+
 ## Kortet
 
 Kortet under "Sådan finder I os" hentes først hos Google, når gæsten klikker

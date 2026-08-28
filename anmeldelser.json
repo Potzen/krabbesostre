@@ -1,0 +1,9 @@
+{
+  "_om": "Anmeldelser hentet fra Google. Filen fyldes af tools/hent_anmeldelser.py og må ikke skrives i hånden med opdigtet indhold. Er listen tom, vises afsnittet slet ikke på siden.",
+  "kilde": "Google",
+  "profil": "https://www.google.com/maps/search/?api=1&query=Thorupstrandvej+323%2C+9690+Fjerritslev",
+  "opdateret": null,
+  "score": null,
+  "antal": null,
+  "anmeldelser": []
+}

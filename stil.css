@@ -569,6 +569,48 @@ p:last-child{margin-bottom:0}
 .g8 img{object-position:92% 50%}
 
 /* ============================================================
+   ANMELDELSER. Bygges ind af tools/hent_anmeldelser.py.
+   Holdt lige saa knap som resten: ingen gule stjernerkasser,
+   bare gaesternes ord og et lille maerke i krabberoed.
+   ============================================================ */
+.anmeldelser{background:var(--paper-2)}
+.anm__hoved{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:1.25rem 0 0;
+}
+.anm__liste{
+  display:grid;gap:clamp(1.75rem,4vw,3rem);
+  grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
+  margin-top:clamp(2.5rem,5vw,4rem);
+}
+.anm__kort{
+  margin:0;padding-top:1.6rem;
+  border-top:var(--rule) solid var(--line);
+}
+.anm__stjerner{
+  display:block;margin-bottom:.9rem;
+  color:var(--crab);font-size:.9rem;letter-spacing:.22em;
+}
+.anm__kort blockquote{
+  margin:0;font-size:1.04rem;line-height:1.6;
+  color:var(--ink-soft);text-wrap:pretty;
+}
+.anm__kort figcaption{
+  margin-top:1.1rem;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 500;
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+.anm__naar{display:block;margin-top:.35rem;opacity:.72}
+.anm__kilde{
+  margin-top:clamp(2rem,4vw,3rem);
+  font-size:.85rem;color:var(--muted);
+}
+.anm__kilde a{color:var(--muted);text-underline-offset:.22em}
+
+/* ============================================================
    SÆSON / CTA
    ============================================================ */
 .cta{background:var(--ink);color:var(--paper);padding-bottom:clamp(3rem,6vw,5rem)}
