@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nytårskassen | Krabbesøstre, Thorupstrand</title>
+<meta name="description" content="Krabbekløer, håndpillede rejer og røget sild fra Thorupstrand, leveret til døren i hele Danmark inden nytårsaften.">
+<link rel="canonical" href="https://krabbesostre.dk/nytaarskasse">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Krabbesøstre">
+<meta property="og:title" content="Nytårskassen fra Krabbesøstre">
+<meta property="og:description" content="Havet fra Thorupstrand, leveret til bordet den 31. december.">
+<meta property="og:url" content="https://krabbesostre.dk/nytaarskasse">
+<meta property="og:image" content="https://krabbesostre.dk/billeder/og.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0E15">
+
+<link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/archivo-var.woff2" crossorigin>
+<link rel="preload" as="image" href="billeder/bord-bred.webp">
+
+<link rel="icon" type="image/png" sizes="64x64" href="billeder/favicon.png">
+<link rel="apple-touch-icon" href="billeder/apple-touch-icon.png">
+
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<style>body{background:#0B0E15}</style>
+<canvas class="stjerner" id="stjerner" aria-hidden="true"></canvas>
+<a class="skip" href="#indhold">Spring til indhold</a>
+
+<header class="header header--nat" id="header">
+  <a class="header__brand" href="index.html" aria-label="Krabbesøstre, til forsiden">
+    <span class="header__crab" aria-hidden="true">
+      <img class="krabbe-lys" src="billeder/krabbe-lys.webp" alt="" width="120" height="120">
+      <img class="krabbe-rod" src="billeder/krabbe.webp" alt="" width="120" height="120">
+    </span>
+    <span class="header__mark">Krabbesøstre</span>
+  </a>
+  <nav class="nav" aria-label="Hovedmenu">
+    <a class="nav__menu" href="index.html#menu">Menu</a>
+    <a href="index.html#historien">Historien</a>
+    <a href="index.html#praktisk">Praktisk</a>
+    <a class="nav__book" href="#bestil">Bestil</a>
+  </nav>
+</header>
+
+<main id="indhold" class="nat">
+
+<!-- ============ TOPBILLEDE ============ -->
+<section class="natshero" id="top">
+  <div class="natshero__media">
+    <img src="billeder/bord-bred.webp" alt="Dækket bord med hvidvinsglas, krabbekløer, rejer og dressinger på hvid dug." fetchpriority="high" width="1800" height="791">
+  </div>
+  <div class="natshero__inner">
+    <p class="natshero__mark">Nytårsaften</p>
+    <h1>Nytårs<em>kasse</em></h1>
+    <p class="natshero__lede">Havet med hjem. En kasse fra Thorupstrand, kørt til døren i hele Danmark. I finder de gode glas frem. Resten står vi for.</p>
+    <div class="natshero__fod">
+      <span>Leveres i hele Danmark</span>
+      <span>150 kr. i fragt</span>
+      <span>Begrænset antal</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATOEN ============ -->
+<section class="dato">
+  <div class="wrap">
+    <span class="dato__tal rv">31</span>
+    <span class="dato__maaned rv">December</span>
+    <p class="dato__linje rv">Kassen er skruet sammen til én aften. Den skal ikke varmes, ikke tilberedes og ikke ordnes. Den skal åbnes.</p>
+  </div>
+</section>
+
+<!-- ============ KASSEN ============ -->
+<section class="section kassen" id="kassen">
+  <div class="wrap">
+    <div class="kassen__hoved">
+      <p class="rv">Kassen</p>
+      <h2 class="rv">Fire ting fra det samme hav</h2>
+    </div>
+
+    <!-- Indholdet er bygget på retterne fra menukortet. Ret det, når I ved,
+         hvad kassen faktisk skal rumme. -->
+    <ol class="kort-liste rv">
+      <li>
+        <b>01</b>
+        <div>
+          <h3>Kogte krabbekløer</h3>
+          <p>Fra klitten bag huset. Der følger dressing og en kniv med, for kløerne skal knækkes. Det er den halve fornøjelse.</p>
+        </div>
+      </li>
+      <li>
+        <b>02</b>
+        <div>
+          <h3>Håndpillede rejer</h3>
+          <p>Pillet i hånden, ikke i maskine. Til dem ved bordet, der hellere vil spise end slås med skaller.</p>
+        </div>
+      </li>
+      <li>
+        <b>03</b>
+        <div>
+          <h3>Røget sild</h3>
+          <p>Med rå æggeblomme og radiser. Vores mormors ret, næsten som hun lavede den.</p>
+        </div>
+      </li>
+      <li>
+        <b>04</b>
+        <div>
+          <h3>Brød og det, der hører til</h3>
+          <p>Brød fra samme ovn som om sommeren, dressingerne og en seddel med, hvordan det anrettes.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ LEVERING ============ -->
+<section class="levering" aria-labelledby="lev-titel">
+  <div class="wrap">
+    <h2 id="lev-titel" class="visuelt-skjult" style="position:absolute;left:-9999px">Levering</h2>
+    <dl class="levering__grid rv">
+      <div>
+        <dt>Hvorhen</dt>
+        <dd>Hele Danmark<small>Øer uden broforbindelse kan vi desværre ikke nå.</small></dd>
+      </div>
+      <div>
+        <dt>Fragt</dt>
+        <dd>150 kr.<small>Samme pris, uanset hvor i landet I bor.</small></dd>
+      </div>
+      <div>
+        <dt>Hvornår</dt>
+        <dd>Inden nytårsaften<small>Vi sender dag og tidsrum, når bestillingen er på plads.</small></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ BÅND ============ -->
+<figure class="band rv" style="margin:0">
+  <img src="billeder/anretning.webp" alt="Skåle med suppe og rejer og et fad krabbekløer anrettet på bordet i redskabshuset." loading="lazy" width="1800" height="1355">
+</figure>
+
+<!-- ============ BESTILLING ============ -->
+<section class="section bestil" id="bestil">
+  <div class="wrap">
+    <p class="natshero__mark rv" style="margin-bottom:1.2rem">Bestilling</p>
+    <h2 class="rv">Skriv jer på</h2>
+    <p class="bestil__lede rv">Vi laver et bestemt antal kasser og ikke én mere. Skriv til os, så vender vi tilbage med pris, leveringsdag og betaling.</p>
+
+    <div class="rv">
+      <form class="signup" id="bestilling" novalidate>
+        <label class="signup__label" for="email">Din mailadresse</label>
+        <div class="signup__field">
+          <input type="email" id="email" name="email" placeholder="din@mail.dk" required autocomplete="email">
+          <button class="btn btn--messing" type="submit">Send <span class="arw" aria-hidden="true">&rarr;</span></button>
+        </div>
+        <p class="signup__note">Vi bruger kun adressen til at svare dig om din bestilling.</p>
+        <p class="signup__ok" role="status">Tak. Vi vender tilbage hurtigst muligt.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DET MED SMÅT ============ -->
+<section class="section smaat smaat--nat">
+  <div class="wrap">
+    <p class="eyebrow rv">Det med småt</p>
+    <div class="smaat__grid rv">
+      <div>
+        <h3>Bestilling</h3>
+        <p>Kassen betales ved bestilling. Den er først jeres, når betalingen er gået igennem, og vi tager imod efter først til mølle.</p>
+      </div>
+      <div>
+        <h3>Levering</h3>
+        <p>Vi kører i hele Danmark for 150 kr. Øer uden broforbindelse kan vi ikke nå, og der er heller ingen afhentning på Thorupstrandvej.</p>
+      </div>
+      <div>
+        <h3>Hvis noget går galt</h3>
+        <p>Er der sket noget med kassen undervejs, så ring eller skriv med det samme. Så finder vi ud af det.</p>
+      </div>
+      <div>
+        <h3>Allergi</h3>
+        <p>Kassen er skaldyr og fisk hele vejen igennem. Sig til ved bestilling, hvis der er noget, vi skal vide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer footer--nat">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <h3>Find os</h3>
+        <p>Thorupstrandvej 323<br>9690 Fjerritslev<br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Thorupstrandvej+323%2C+9690+Fjerritslev" target="_blank" rel="noopener">Google Maps</a></p>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <!-- TODO: indsæt jeres rigtige mail og telefonnummer -->
+        <p><a href="mailto:contact@krabbesostre.dk">contact@krabbesostre.dk</a></p>
+      </div>
+      <div>
+        <h3>Følg med</h3>
+        <!-- TODO: indsæt jeres rigtige profil-URL'er -->
+        <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a><br>
+           <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+      <div>
+        <h3>Restauranten</h3>
+        <p><a href="index.html">Forsiden</a><br>
+           <a href="https://krabbesostre.dk/bordreservation">Book bord</a></p>
+      </div>
+    </div>
+
+    <img class="footer__logo" src="billeder/logo-lys.webp" alt="" width="460" height="623" loading="lazy" aria-hidden="true">
+
+    <div class="footer__legal">
+      <span>Krabbesøstre I/S, Thorupstrand</span>
+      <span>Kutteren Ralima, HM 323</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var header = document.getElementById("header");
+  var hero = document.getElementById("top");
+  if (header && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function(entries){
+      header.classList.toggle("is-stuck", !entries[0].isIntersecting);
+    }, {rootMargin: "-80% 0px 0px 0px"}).observe(hero);
+  }
+
+  var items = document.querySelectorAll(".rv");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e, i){
+        if (e.isIntersecting){
+          e.target.style.transitionDelay = Math.min(i * 90, 360) + "ms";
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin: "0px 0px -12% 0px", threshold: 0.06});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Blid parallakse paa topbilledet. Billedet er skaleret en anelse op,
+     saa der aldrig opstaar en kant, naar det glider. */
+  var topBillede = document.querySelector(".natshero__media img");
+  if (topBillede && !reduce) {
+    var venter = false;
+    addEventListener("scroll", function(){
+      if (venter) return;
+      venter = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY;
+        if (y < innerHeight * 1.3) {
+          topBillede.style.transform = "translateY(" + (y * 0.16).toFixed(1) + "px) scale(1.07)";
+        }
+        venter = false;
+      });
+    }, {passive: true});
+  }
+
+  /* Stjernestøv. Et lærred bag hele siden med en kølig nathimmel foroven,
+     levende lys forneden og et fint drys af blinkende korn. Er reduceret
+     bevægelse slået til, tegnes billedet én gang og står stille. */
+  var laerred = document.getElementById("stjerner");
+  if (laerred && laerred.getContext) {
+    var ctx = laerred.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var b, h, korn = [], gloed = [], start = 0;
+
+    function saetOp(){
+      b = laerred.width  = Math.round(innerWidth  * dpr);
+      h = laerred.height = Math.round(innerHeight * dpr);
+      laerred.style.width  = innerWidth  + "px";
+      laerred.style.height = innerHeight + "px";
+      var antal = Math.round(Math.min(innerWidth, 1800) * innerHeight / 5000);
+      korn = [];
+      for (var i = 0; i < antal; i++){
+        korn.push({
+          x: Math.random() * b,
+          y: Math.random() * h,
+          r: (Math.random() * 1.15 + 0.34) * dpr,
+          a: Math.random() * 0.52 + 0.18,
+          stor: Math.random() < 0.05,
+          f: Math.random() * 0.9 + 0.22,
+          p: Math.random() * Math.PI * 2,
+          d: (Math.random() * 0.14 + 0.02) * dpr,
+          varm: Math.random() < 0.36
+        });
+      }
+      gloed = [
+        {x:.16, y:.20, r:.62, a:.070},
+        {x:.80, y:.58, r:.68, a:.055},
+        {x:.46, y:.92, r:.55, a:.045}
+      ];
+    }
+
+    function tegn(tid){
+      ctx.clearRect(0, 0, b, h);
+
+      var v = ctx.createLinearGradient(0, 0, 0, h);
+      v.addColorStop(0,   "#0B0E15");
+      v.addColorStop(.52, "#0E0C09");
+      v.addColorStop(1,   "#16100A");
+      ctx.fillStyle = v;
+      ctx.fillRect(0, 0, b, h);
+
+      for (var g = 0; g < gloed.length; g++){
+        var l = gloed[g];
+        var rad = ctx.createRadialGradient(l.x*b, l.y*h, 0, l.x*b, l.y*h, l.r*h);
+        rad.addColorStop(0,  "rgba(201,164,106," + l.a + ")");
+        rad.addColorStop(1,  "rgba(201,164,106,0)");
+        ctx.fillStyle = rad;
+        ctx.fillRect(0, 0, b, h);
+      }
+
+      var t = tid / 1000;
+      var rul = (window.scrollY || 0) * 0.06 * dpr;
+      for (var i = 0; i < korn.length; i++){
+        var k = korn[i];
+        var y = k.y - (t * k.d * 10) - rul;
+        y = ((y % h) + h) % h;
+        var blink = 0.55 + 0.45 * Math.sin(t * k.f + k.p);
+        var styrke = (k.a * blink);
+        if (k.stor) {
+          var halo = ctx.createRadialGradient(k.x, y, 0, k.x, y, k.r * 7);
+          halo.addColorStop(0, "rgba(226,205,168," + (styrke * 0.5).toFixed(3) + ")");
+          halo.addColorStop(1, "rgba(226,205,168,0)");
+          ctx.fillStyle = halo;
+          ctx.beginPath();
+          ctx.arc(k.x, y, k.r * 7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc(k.x, y, k.stor ? k.r * 1.5 : k.r, 0, Math.PI * 2);
+        ctx.fillStyle = k.varm
+          ? "rgba(219,190,143," + styrke.toFixed(3) + ")"
+          : "rgba(240,243,250," + styrke.toFixed(3) + ")";
+        ctx.fill();
+      }
+    }
+
+    saetOp();
+    if (reduce) {
+      tegn(0);
+      addEventListener("resize", function(){ saetOp(); tegn(0); });
+    } else {
+      (function løkke(tid){ tegn(tid); requestAnimationFrame(løkke); })(0);
+      var vent;
+      addEventListener("resize", function(){
+        clearTimeout(vent); vent = setTimeout(saetOp, 180);
+      });
+    }
+  }
+
+  /* Betaling.
+     Sæt BETALING_NYTAAR til jeres betalingslink (Stripe Payment Link eller
+     MobilePay MyShop). Saa snart det er udfyldt, sender knappen gaesten
+     direkte til betaling. Er det tomt, gaar bestillingen gennem formularen. */
+  var BETALING_NYTAAR = "";
+  var ENDPOINT = "";
+  var MAIL_TO  = "contact@krabbesostre.dk";
+
+  var form = document.getElementById("bestilling");
+  if (form) {
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var input = form.querySelector("input[type=email]");
+      if (!input.value || input.validity.typeMismatch || input.value.indexOf("@") < 0) {
+        input.focus();
+        input.setCustomValidity("Skriv venligst en gyldig mailadresse");
+        input.reportValidity();
+        return;
+      }
+      input.setCustomValidity("");
+      if (BETALING_NYTAAR) { window.location.href = BETALING_NYTAAR; return; }
+      if (ENDPOINT) {
+        fetch(ENDPOINT, {method:"POST", body:new FormData(form), mode:"no-cors"}).then(faerdig).catch(faerdig);
+      } else {
+        window.location.href = "mailto:" + MAIL_TO +
+          "?subject=" + encodeURIComponent("Bestilling af nytårskasse") +
+          "&body=" + encodeURIComponent("Hej Krabbesøstre\n\nJeg vil gerne bestille en nytårskasse.\n\nAntal:\nLeveringsadresse:\n\nMin mail: " + input.value);
+        faerdig();
+      }
+      function faerdig(){ form.classList.add("is-done"); input.value = ""; }
+    });
+  }
+})();
+</script>
+</body>
+</html>
