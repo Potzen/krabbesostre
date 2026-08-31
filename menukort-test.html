@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menukort, udkast | Krabbesøstre</title>
+<meta name="description" content="Testside med to udkast til menukortet.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F2E9">
+
+<link rel="preload" as="font" type="font/woff2" href="fonts/archivo-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-var.woff2" crossorigin>
+<link rel="icon" type="image/png" sizes="64x64" href="billeder/favicon.png">
+<link rel="stylesheet" href="stil.css">
+
+<style>
+/* ============================================================
+   Alt herunder hører kun til denne testside.
+   Intet af det rører den rigtige hjemmeside.
+   ============================================================ */
+.t-top{padding-top:clamp(5.75rem,11vw,8rem);padding-bottom:clamp(1.5rem,3vw,2.5rem)}
+.t-top h1{font-size:clamp(1.9rem,4.4vw,3.25rem);margin-bottom:1rem}
+.t-top p{max-width:56ch;color:var(--ink-soft)}
+.t-note{
+  margin-top:1.5rem;padding:1rem 1.25rem;
+  border-left:2px solid var(--crab);background:var(--paper-2);
+  max-width:56ch;font-size:.95rem;line-height:1.55;color:var(--ink-soft);
+}
+.t-sek{padding-block:clamp(3.5rem,8vw,7rem);border-top:var(--rule) solid var(--line)}
+.t-sek:nth-of-type(even){background:var(--paper-2)}
+.t-nr{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--crab);margin:0 0 1rem;
+}
+.t-sek h2{font-size:clamp(1.6rem,3.6vw,2.6rem);margin-bottom:.9rem}
+.t-om{max-width:58ch;color:var(--ink-soft);font-size:1rem;line-height:1.6}
+
+/* ============================================================
+   UDKAST A. Bordet som en tavle med nøgle, ligesom en gammel
+   plancheside. Tallene er samme sprog som 01 02 03 på
+   nytårssiden, så det føles som en del af huset.
+   ============================================================ */
+.plan{
+  display:grid;gap:clamp(2rem,4vw,3.5rem);
+  grid-template-columns:1fr;
+  margin-top:clamp(2.5rem,5vw,4rem);
+  align-items:start;
+}
+@media (min-width:900px){.plan{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
+
+.plan__billede{position:relative;margin:0;line-height:0}
+.plan__billede img{width:100%;height:auto;display:block}
+
+.maerke{
+  position:absolute;transform:translate(-50%,-50%);
+  width:2.35rem;height:2.35rem;padding:0;
+  display:grid;place-items:center;
+  border-radius:50%;cursor:pointer;
+  border:1.5px solid rgba(246,242,233,.9);
+  background:rgba(20,19,14,.34);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  color:var(--paper);
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.66rem;letter-spacing:.06em;
+  transition:background .3s ease,transform .3s ease,border-color .3s ease;
+}
+.maerke:hover,.maerke.aktiv{
+  background:var(--crab);border-color:var(--crab);
+  transform:translate(-50%,-50%) scale(1.12);
+}
+@media (max-width:560px){.maerke{width:2rem;height:2rem;font-size:.6rem}}
+
+.noegle{list-style:none;margin:0;padding:0;border-top:var(--rule) solid var(--line)}
+.noegle li{
+  display:grid;grid-template-columns:2.5rem 1fr;gap:.9rem;
+  padding-block:clamp(1rem,2.2vw,1.5rem);
+  border-bottom:var(--rule) solid var(--line);
+  cursor:pointer;transition:background .3s ease;
+}
+.noegle li.aktiv{background:rgba(193,39,45,.05)}
+.noegle b{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 500;
+  font-size:.68rem;letter-spacing:.14em;color:var(--crab);
+  padding-top:.35rem;font-variant-numeric:tabular-nums;
+}
+.noegle h3{
+  font-size:1rem;letter-spacing:.04em;margin:0 0 .35rem;
+}
+.noegle p{margin:0;font-size:.96rem;line-height:1.5;color:var(--ink-soft);max-width:40ch}
+
+/* ============================================================
+   UDKAST B. Det trykte kort. Billedet som et bånd, og derunder
+   menuen sat som et rigtigt menukort med hårlinjer.
+   ============================================================ */
+.kort-band{margin:clamp(2.5rem,5vw,4rem) 0 0;line-height:0}
+.kort-band img{width:100%;height:clamp(14rem,34vh,22rem);object-fit:cover;object-position:50% 62%}
+
+.trykt{
+  max-width:44rem;margin:clamp(3rem,6vw,5rem) auto 0;
+  text-align:center;
+}
+.trykt__hoved{
+  font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 620;
+  font-size:clamp(1.6rem,3.4vw,2.4rem);text-transform:uppercase;
+  line-height:.95;margin:0;
+}
+.trykt__under{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted);margin:.9rem 0 0;
+}
+.trykt__streg{
+  width:3.5rem;height:1px;background:var(--crab);
+  margin:clamp(1.75rem,3.5vw,2.5rem) auto;border:0;
+}
+.trykt__afsnit{margin-top:clamp(2.25rem,4.5vw,3.25rem)}
+.trykt__titel{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 1.5rem;
+  padding-bottom:.8rem;border-bottom:var(--rule) solid var(--line);
+}
+.ret{padding-block:clamp(1.1rem,2.2vw,1.5rem)}
+.ret + .ret{border-top:var(--rule) solid var(--line-soft)}
+.ret__navn{
+  font-family:var(--text);font-weight:400;text-transform:none;
+  font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.2;
+  letter-spacing:-.01em;margin:0 0 .45rem;
+}
+.ret__om{
+  margin:0 auto;max-width:44ch;
+  font-size:.98rem;line-height:1.55;color:var(--ink-soft);
+}
+.smaating{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.5rem;
+  margin-top:1.25rem;
+  font-size:1rem;color:var(--ink-soft);
+}
+.smaating span::after{content:"";}
+.trykt__fod{
+  margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.4rem;
+  border-top:var(--rule) solid var(--line);
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .maerke,.noegle li{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#indhold">Spring til indhold</a>
+
+<header class="header is-stuck">
+  <a class="header__brand" href="index.html" aria-label="Krabbesøstre, til forsiden">
+    <span class="header__crab" aria-hidden="true">
+      <img class="krabbe-lys" src="billeder/krabbe-lys.webp" alt="" width="120" height="120">
+      <img class="krabbe-rod" src="billeder/krabbe.webp" alt="" width="120" height="120">
+    </span>
+    <span class="header__mark">Krabbesøstre</span>
+  </a>
+  <nav class="nav" aria-label="Hovedmenu">
+    <a href="index.html">Forsiden</a>
+    <a class="nav__nytaar" href="nytaarskasse.html">Nytårskasse</a>
+  </nav>
+</header>
+
+<main id="indhold">
+
+<section class="t-top">
+  <div class="wrap">
+    <p class="t-nr">Udkast</p>
+    <h1>To måder at vise menuen</h1>
+    <p>Begge bygger på ét billede af hele bordet. Kig på dem, og sig hvilken vej der føles rigtig, eller om der skal noget helt tredje til. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
+
+    <p class="t-note"><b>Billedet er en stedfortræder.</b> Dit nye foto af hele bordet er ikke kommet igennem som fil, kun som noget jeg kan se på. Så længe bruger jeg jeres eksisterende bordbillede, og markørerne sidder på de retter, der faktisk er i det: krabbekløer, rejer, brød, dressinger og vin. Når det rigtige foto er her, flytter jeg markørerne til krabbekløer, rejer, sild, dressinger og øl. Det tager to minutter, for placeringen ligger som fem tal i koden.</p>
+  </div>
+</section>
+
+<!-- ============ UDKAST A ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast A</p>
+    <h2>Bordet som kortet</h2>
+    <p class="t-om">Billedet er selve menukortet. Små tal ligger på retterne, og nøglen ved siden af fortæller, hvad de er. Peger man på et tal, lyser den tilhørende linje op, og omvendt. Det er samme talsprog som 01 til 04 på nytårssiden, så det føles som en del af huset. Uden mus virker det stadig: nøglen er almindelig tekst, der kan læses fra ende til anden.</p>
+
+    <div class="plan">
+      <figure class="plan__billede" id="planBillede">
+        <img src="billeder/borddaekning.webp" alt="Dækket bord med krabbekløer, håndpillede rejer, brød, dressinger og hvidvin." width="1500" height="1125">
+        <!-- markørerne sættes af scriptet nederst -->
+      </figure>
+
+      <ol class="noegle" id="noegle">
+        <li data-nr="1">
+          <b>01</b>
+          <div>
+            <h3>Krabbekløer</h3>
+            <p>Kogte krabbekløer, en dressing og en kniv, der er skarpere end den ser ud. Resten knækker du selv.</p>
+          </div>
+        </li>
+        <li data-nr="2">
+          <b>02</b>
+          <div>
+            <h3>Håndpillede rejer</h3>
+            <p>En skål rejer og en kvist dild. Til dem, der hellere vil spise end knække, og til dem, der vil have begge dele.</p>
+          </div>
+        </li>
+        <li data-nr="3">
+          <b>03</b>
+          <div>
+            <h3>Brødet</h3>
+            <p>Fra samme ovn hver morgen. Der følger brød med til alt, hvad der kommer på bordet.</p>
+          </div>
+        </li>
+        <li data-nr="4">
+          <b>04</b>
+          <div>
+            <h3>Dressingerne</h3>
+            <p>To slags, en syrlig og en med dild. De står fremme, og man tager selv.</p>
+          </div>
+        </li>
+        <li data-nr="5">
+          <b>05</b>
+          <div>
+            <h3>Vinen</h3>
+            <p>Hvidt og rosé fra Sydafrika, New Zealand og Bourgogne. Øl fra Hancock og Thy står ved siden af.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UDKAST B ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast B</p>
+    <h2>Det trykte kort</h2>
+    <p class="t-om">Billedet ligger som et bånd, og derunder står menuen sat op, som var den trykt på et stykke karton: midtstillet, med hårlinjer og en enkelt rød streg. Retternes navne står i antikvaen frem for i den kondenserede versal, hvilket gør kortet blødere at læse end resten af siden. Det er den roligste af de to, og den, en gæst hurtigst kan skimme.</p>
+  </div>
+
+  <figure class="kort-band" style="margin-inline:0">
+    <img src="billeder/borddaekning.webp" alt="Dækket bord med krabbekløer, håndpillede rejer, brød, dressinger og hvidvin." width="1500" height="1125" loading="lazy">
+  </figure>
+
+  <div class="wrap">
+    <div class="trykt">
+      <h3 class="trykt__hoved">Fra havet udenfor</h3>
+      <p class="trykt__under">Thorupstrand, hundrede meter herfra</p>
+      <hr class="trykt__streg">
+
+      <div class="trykt__afsnit">
+        <p class="trykt__titel">Til bordet</p>
+        <div class="ret">
+          <p class="ret__navn">Krabbekløer</p>
+          <p class="ret__om">Kogte krabbekløer, en dressing og en kniv, der er skarpere end den ser ud. Resten knækker du selv.</p>
+        </div>
+        <div class="ret">
+          <p class="ret__navn">Håndpillede rejer</p>
+          <p class="ret__om">En skål rejer og en kvist dild. Til dem, der hellere vil spise end knække, og til dem, der vil have begge dele.</p>
+        </div>
+        <div class="ret">
+          <p class="ret__navn">Røget sild</p>
+          <p class="ret__om">Med rå æggeblomme, dressing og radiser. Vores mormors ret, næsten som hun lavede den.</p>
+        </div>
+      </div>
+
+      <div class="trykt__afsnit">
+        <p class="trykt__titel">Til sidst</p>
+        <div class="smaating">
+          <span>Valnøddetærte med creme fraiche</span>
+          <span>Chokoladetærte med creme fraiche</span>
+        </div>
+      </div>
+
+      <div class="trykt__afsnit">
+        <p class="trykt__titel">Til at drikke</p>
+        <div class="smaating">
+          <span>Hancock Black Lager</span>
+          <span>Hancock Høker Bajer</span>
+          <span>Thy alkoholfri</span>
+          <span>Hancock Sport-Cola</span>
+          <span>Sodavand</span>
+          <span>Kaffe og the</span>
+        </div>
+      </div>
+
+      <div class="trykt__afsnit">
+        <p class="trykt__titel">Vinkortet</p>
+        <div class="smaating">
+          <span>Alexander Vineyards Sauvignon Blanc</span>
+          <span>Waterford Rose-Mary, rosé</span>
+          <span>Glen Carlou Chardonnay</span>
+          <span>Cloudy Bay Sauvignon Blanc</span>
+          <span>Faiveley Chassagne-Montrachet</span>
+        </div>
+      </div>
+
+      <p class="trykt__fod">Alt serveres med brød og dressing</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__legal" style="border-top:1px solid rgba(246,242,233,.16);padding-top:2rem">
+      <span>Udkast, ikke en del af hjemmesiden</span>
+      <span><a href="index.html">Tilbage til forsiden</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Markørernes placering på billedet, i procent af bredde og højde.
+     Det er kun disse fem linjer, der skal rettes, når det rigtige
+     foto af hele bordet er på plads. */
+  var MAERKER = [
+    {nr:1, navn:"Krabbekløer",       x:47, y:56},
+    {nr:2, navn:"Håndpillede rejer", x:80, y:66},
+    {nr:3, navn:"Brødet",            x:73, y:46},
+    {nr:4, navn:"Dressingerne",      x:47, y:81},
+    {nr:5, navn:"Vinen",             x:20, y:70}
+  ];
+
+  var billede = document.getElementById("planBillede");
+  var noegle  = document.getElementById("noegle");
+  if (!billede || !noegle) return;
+
+  MAERKER.forEach(function(m){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "maerke";
+    b.dataset.nr = m.nr;
+    b.style.left = m.x + "%";
+    b.style.top  = m.y + "%";
+    b.textContent = ("0" + m.nr).slice(-2);
+    b.setAttribute("aria-label", m.navn + ", nummer " + m.nr + " på kortet");
+    billede.appendChild(b);
+  });
+
+  function saet(nr, til){
+    billede.querySelectorAll(".maerke").forEach(function(e){
+      e.classList.toggle("aktiv", til && e.dataset.nr === String(nr));
+    });
+    noegle.querySelectorAll("li").forEach(function(e){
+      e.classList.toggle("aktiv", til && e.dataset.nr === String(nr));
+    });
+  }
+
+  function kobl(el){
+    var nr = el.dataset.nr;
+    el.addEventListener("pointerenter", function(){ saet(nr, true); });
+    el.addEventListener("pointerleave", function(){ saet(nr, false); });
+    el.addEventListener("focus", function(){ saet(nr, true); });
+    el.addEventListener("blur", function(){ saet(nr, false); });
+    el.addEventListener("click", function(){ saet(nr, true); });
+  }
+  billede.querySelectorAll(".maerke").forEach(kobl);
+  noegle.querySelectorAll("li").forEach(kobl);
+})();
+</script>
+</body>
+</html>
