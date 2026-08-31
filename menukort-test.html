@@ -22,6 +22,46 @@
 .t-top h1{font-size:clamp(1.9rem,4.4vw,3.25rem);margin-bottom:1rem}
 .t-top p{max-width:56ch;color:var(--ink-soft)}
 .t-sek{padding-block:clamp(3.5rem,8vw,7rem);border-top:var(--rule) solid var(--line)}
+/* Menulinjen ligger fast øverst. Uden denne afstand lander overskriften
+   inde under den, når man hopper til et udkast fra oversigten. */
+.t-sek,.t-top{scroll-margin-top:clamp(4rem,8vw,5.5rem)}
+
+/* --- Oversigten øverst, genvej til hvert udkast --- */
+.t-index{
+  margin-top:clamp(2rem,4vw,3rem);
+  display:grid;gap:clamp(1.5rem,3vw,2.5rem);grid-template-columns:1fr;
+  border-top:var(--rule) solid var(--line);padding-top:clamp(1.5rem,3vw,2.25rem);
+}
+@media (min-width:760px){.t-index{grid-template-columns:repeat(3,1fr)}}
+.t-index__hvad{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .75rem;
+}
+.t-index ul{list-style:none;margin:0;padding:0}
+.t-index li{border-top:1px solid var(--line)}
+.t-index li:last-child{border-bottom:1px solid var(--line)}
+.t-index a{
+  display:flex;gap:.9rem;align-items:baseline;
+  padding:.72rem 0;text-decoration:none;color:var(--ink);  /* mindst 44 px at ramme med en finger */
+  transition:color .25s ease,padding-left .25s ease;
+}
+.t-index a:hover,.t-index a:focus-visible{color:var(--crab);padding-left:.35rem}
+.t-index a b{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.7rem;letter-spacing:.14em;color:var(--crab);
+  min-width:1.1em;font-weight:400;
+}
+.t-index a span{font-size:1rem;line-height:1.35}
+
+/* --- Retur til oversigten, nederst i hvert udkast --- */
+.t-retur{margin:clamp(2.5rem,5vw,3.5rem) 0 0}
+.t-retur a{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .25s ease;
+}
+.t-retur a:hover,.t-retur a:focus-visible{color:var(--crab)}
 .t-sek:nth-of-type(even){background:var(--paper-2)}
 .t-nr{
   font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
@@ -398,16 +438,45 @@
 
 <main id="indhold">
 
-<section class="t-top">
+<section class="t-top" id="oversigt">
   <div class="wrap">
     <p class="t-nr">Udkast</p>
     <h1>Elleve måder at vise menuen</h1>
     <p>De fem første bygger på det samme billede af hele bordet. F, G og H er helt uden billeder. I, J og K har billeder, men ikke af maden: stedet, kortet og rummet. Så kan teorien om madbilleder afprøves i tre trin. Sig hvilken vej der føles rigtig, hvad der skal skrues på, og hvad der kan smides væk. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
+
+    <nav class="t-index" aria-label="Genveje til udkastene">
+      <div class="t-index__gruppe">
+        <p class="t-index__hvad">På bordbilledet</p>
+        <ul>
+          <li><a href="#udkast-a"><b>A</b> <span>Bordet som kortet</span></a></li>
+          <li><a href="#udkast-b"><b>B</b> <span>Det trykte kort</span></a></li>
+          <li><a href="#udkast-c"><b>C</b> <span>Stregerne</span></a></li>
+          <li><a href="#udkast-d"><b>D</b> <span>Læn dig frem</span></a></li>
+          <li><a href="#udkast-e"><b>E</b> <span>Luppen</span></a></li>
+        </ul>
+      </div>
+      <div class="t-index__gruppe">
+        <p class="t-index__hvad">Uden billeder</p>
+        <ul>
+          <li><a href="#udkast-f"><b>F</b> <span>Plakaten</span></a></li>
+          <li><a href="#udkast-g"><b>G</b> <span>Ordene</span></a></li>
+          <li><a href="#udkast-h"><b>H</b> <span>Hvad er du for en?</span></a></li>
+        </ul>
+      </div>
+      <div class="t-index__gruppe">
+        <p class="t-index__hvad">Billeder, men ikke af maden</p>
+        <ul>
+          <li><a href="#udkast-i"><b>I</b> <span>Stedet bag retten</span></a></li>
+          <li><a href="#udkast-j"><b>J</b> <span>Kortet på bordet</span></a></li>
+          <li><a href="#udkast-k"><b>K</b> <span>Rummet bag menuen</span></a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </section>
 
 <!-- ============ A ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-a">
   <div class="wrap">
     <p class="t-nr">Udkast A</p>
     <h2>Bordet som kortet</h2>
@@ -420,10 +489,11 @@
       <ol class="noegle" id="noegleA"></ol>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ B ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-b">
   <div class="wrap">
     <p class="t-nr">Udkast B</p>
     <h2>Det trykte kort</h2>
@@ -456,10 +526,11 @@
       <p class="trykt__fod">Alt serveres med brød og dressing</p>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ C ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-c">
   <div class="wrap">
     <p class="t-nr">Udkast C</p>
     <h2>Stregerne</h2>
@@ -473,10 +544,11 @@
     </div>
     <ol class="noegle streg__liste" id="noegleC"></ol>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ D ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-d">
   <div class="wrap">
     <p class="t-nr">Udkast D</p>
     <h2>Læn dig frem</h2>
@@ -490,10 +562,11 @@
       <div class="zoom__valg" id="zoomValg"></div>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ E ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-e">
   <div class="wrap">
     <p class="t-nr">Udkast E</p>
     <h2>Luppen</h2>
@@ -507,11 +580,12 @@
     <p class="lup__hint" id="lupHint">Før musen hen over bordet</p>
     <ol class="noegle" id="noegleE" style="max-width:46rem;margin-inline:auto"></ol>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 
 <!-- ============ F ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-f">
   <div class="wrap">
     <p class="t-nr">Udkast F, uden mad på</p>
     <h2>Plakaten</h2>
@@ -546,10 +620,11 @@
       <p class="plakat__fod">Alt serveres med brød og dressing</p>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ G ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-g">
   <div class="wrap">
     <p class="t-nr">Udkast G, uden mad på</p>
     <h2>Ordene</h2>
@@ -557,10 +632,11 @@
 
     <div class="ord" id="ordG"></div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ H ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-h">
   <div class="wrap">
     <p class="t-nr">Udkast H, uden mad på</p>
     <h2>Hvad er du for en?</h2>
@@ -568,11 +644,12 @@
 
     <div class="guide" id="guideH"></div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 
 <!-- ============ I ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-i">
   <div class="wrap">
     <p class="t-nr">Udkast I, billeder uden mad</p>
     <h2>Stedet bag retten</h2>
@@ -599,10 +676,11 @@
       </article>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ J ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-j">
   <div class="wrap">
     <p class="t-nr">Udkast J, billeder uden mad</p>
     <h2>Kortet på bordet</h2>
@@ -631,10 +709,11 @@
       <p class="plakat__fod">Alt serveres med brød og dressing</p>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 <!-- ============ K ============ -->
-<section class="t-sek">
+<section class="t-sek" id="udkast-k">
   <div class="wrap">
     <p class="t-nr">Udkast K, billeder uden mad</p>
     <h2>Rummet bag menuen</h2>
@@ -649,6 +728,7 @@
       </div>
     </div>
   </div>
+  <div class="wrap"><p class="t-retur"><a href="#oversigt"><span aria-hidden="true">&uarr;</span> Oversigten</a></p></div>
 </section>
 
 </main>
