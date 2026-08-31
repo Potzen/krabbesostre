@@ -292,6 +292,91 @@
 }
 .guide__svarom{margin:0 auto;max-width:36ch;font-size:1.05rem;line-height:1.6;color:var(--ink-soft)}
 .guide__igen{margin-top:clamp(2rem,4vw,2.75rem)}
+
+/* ============================================================
+   BILLEDER, MEN IKKE AF MADEN. Stedet, kortet og rummet.
+   ============================================================ */
+
+/* --- I. Stedet bag retten --- */
+.sted{display:grid;gap:clamp(2rem,4vw,2.75rem);grid-template-columns:1fr;margin-top:clamp(2.5rem,5vw,4rem)}
+@media (min-width:820px){.sted{grid-template-columns:repeat(3,1fr)}}
+.sted__kort{margin:0}
+.sted__kort figure{margin:0;aspect-ratio:3/4;overflow:hidden;background:var(--paper-2)}
+.sted__kort img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.sted__kort--hav img{object-position:50% 64%}      /* ned mod vandkanten, ikke himmel */
+.sted__kort--vindue img{object-position:36% 50%}   /* hele Maiken, ingen halv nabo i kanten */
+.sted__kort:hover img{transform:scale(1.035)}
+.sted__hvor{
+  margin:1.1rem 0 .5rem;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--crab);
+}
+.sted__navn{
+  font-family:var(--text);font-weight:400;text-transform:none;
+  font-size:clamp(1.4rem,4.5vw,1.85rem);line-height:1.15;letter-spacing:-.015em;margin:0 0 .6rem;
+}
+.sted__om{margin:0;font-size:.98rem;line-height:1.55;color:var(--ink-soft)}
+
+/* --- J. Kortet på bordet --- */
+.kortfoto{margin:clamp(2.5rem,5vw,4rem) 0 0;line-height:0}
+.kortfoto{aspect-ratio:3.4/1}
+.kortfoto img{width:100%;height:100%;object-fit:cover;object-position:50% 0%;display:block}
+/* Beskåret over overskriften med vilje. Det fotograferede kort har priser
+   trykt i højre kolonne, og priser står ikke på siden. Her ligger kortet
+   som en genstand på bordet, og selve menuen læses i teksten nedenunder. */
+.kortfoto figcaption{
+  margin-top:.9rem;line-height:1.5;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+
+/* --- K. Rummet bag menuen --- */
+.rum{
+  position:relative;margin-top:clamp(2.5rem,5vw,4rem);
+  aspect-ratio:3/4;overflow:hidden;background:var(--ink);
+}
+@media (min-width:820px){.rum{aspect-ratio:16/10}}
+.rum__lag{position:absolute;inset:0}
+.rum__lag img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity 1.1s ease;
+  filter:saturate(.86) brightness(.76);
+}
+.rum__lag img.frem{opacity:1}
+/* To slør: et fra bunden og et fra venstre. Det venstre sikrer, at teksten
+   kan læses, uanset hvor lyst eller uroligt billedet bag den er. */
+.rum::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(to right,rgba(12,11,8,.72) 0%,rgba(12,11,8,.34) 42%,rgba(12,11,8,0) 70%),
+    linear-gradient(to top,rgba(12,11,8,.88) 0%,rgba(12,11,8,.46) 48%,rgba(12,11,8,.26) 100%);
+}
+.rum__indhold{
+  position:relative;z-index:2;height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(1.5rem,4vw,3rem);
+}
+.rum__top{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(246,242,233,.8);margin:0 0 1.1rem;
+}
+.rum__liste{list-style:none;margin:0;padding:0}
+.rum__valg{
+  width:100%;display:block;text-align:left;background:none;border:0;cursor:pointer;
+  padding:.5rem 0;color:rgba(246,242,233,.64);
+  font-family:var(--text);font-weight:300;text-transform:none;
+  font-size:clamp(1.35rem,5.5vw,2.1rem);line-height:1.2;letter-spacing:-.015em;
+  transition:color .45s ease;-webkit-tap-highlight-color:transparent;
+}
+.rum__valg.frem,.rum__valg:hover{color:var(--paper)}
+.rum__om{
+  margin:.6rem 0 0;max-width:34ch;min-height:3.2em;
+  font-size:.95rem;line-height:1.5;color:rgba(246,242,233,.82);
+  opacity:0;transition:opacity .5s ease;
+}
+.rum__om.frem{opacity:1}
 </style>
 </head>
 <body>
@@ -316,8 +401,8 @@
 <section class="t-top">
   <div class="wrap">
     <p class="t-nr">Udkast</p>
-    <h1>Otte måder at vise menuen</h1>
-    <p>De fem første bygger på det samme billede af hele bordet. De tre nederste, F, G og H, er helt uden fotos af maden, så teorien om at madbilleder ikke hjælper kan afprøves side om side. Sig hvilken vej der føles rigtig, hvad der skal skrues på, og hvad der kan smides væk. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
+    <h1>Elleve måder at vise menuen</h1>
+    <p>De fem første bygger på det samme billede af hele bordet. F, G og H er helt uden billeder. I, J og K har billeder, men ikke af maden: stedet, kortet og rummet. Så kan teorien om madbilleder afprøves i tre trin. Sig hvilken vej der føles rigtig, hvad der skal skrues på, og hvad der kan smides væk. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
   </div>
 </section>
 
@@ -482,6 +567,87 @@
     <p class="t-om">To spørgsmål, og så peger den på din ret. Den bruger sidens egen skelnen mellem dem, der vil slås med skallerne, og dem, der bare vil spise. I stedet for at vise gæsten al maden på én gang, spørger den, hvem gæsten er, og lader hende selv nå frem til svaret. Det er den eneste af de otte, hvor gæsten træffer et valg, inden hun ser en ret.</p>
 
     <div class="guide" id="guideH"></div>
+  </div>
+</section>
+
+
+<!-- ============ I ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast I, billeder uden mad</p>
+    <h2>Stedet bag retten</h2>
+    <p class="t-om">Hver ret får et billede, men ikke af sig selv. Den får et billede af, hvor den kommer fra: havet hundrede meter væk, vinduet hvor rejerne pilles, redskabshuset hvor mormors sild står på bordet. Teorien holdes stadig, for der er ingen mad at se, men gæsten får noget at kigge på og en grund til, at retten smager af noget bestemt.</p>
+
+    <div class="sted">
+      <article class="sted__kort sted__kort--hav">
+        <figure><img src="billeder/strand.webp" alt="Vesterhavet ud for Thorupstrand set gennem marehalmen." width="1536" height="640" loading="lazy"></figure>
+        <p class="sted__hvor">Hundrede meter herfra</p>
+        <h3 class="sted__navn">Krabbekløer</h3>
+        <p class="sted__om">Kogte krabbekløer, en dressing og en kniv. De blev fanget i vandet, du kan se fra bordet.</p>
+      </article>
+      <article class="sted__kort sted__kort--vindue">
+        <figure><img src="billeder/sostrene-vindue.webp" alt="Maiken i vinduet ind til køkkenet." width="1280" height="720" loading="lazy"></figure>
+        <p class="sted__hvor">Pillet her i vinduet</p>
+        <h3 class="sted__navn">Håndpillede rejer</h3>
+        <p class="sted__om">En skål rejer og en kvist dild. Pillet i hånden, ikke i maskine, af søstrene selv.</p>
+      </article>
+      <article class="sted__kort">
+        <figure><img src="billeder/skur.webp" alt="Loftet i redskabshuset med spær, bølgeblik og ophængte garn." width="1800" height="1303" loading="lazy"></figure>
+        <p class="sted__hvor">I fars redskabshus</p>
+        <h3 class="sted__navn">Røget sild</h3>
+        <p class="sted__om">Med rå æggeblomme, dressing og radiser. Mormors ret, spist under garnene hun kendte.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast J, billeder uden mad</p>
+    <h2>Kortet på bordet</h2>
+    <p class="t-om">Det eneste billede er et foto af menukortet selv, som det ligger på et forvitret træbord med en sten og en buket. Ingen mad, men et løfte om, at der findes et rigtigt sted med et rigtigt kort. Derunder står det samme, sat så det kan læses på en telefon. Det er den mest ærlige af dem alle: den viser præcis dét, gæsten får i hånden.</p>
+  </div>
+
+  <figure class="kortfoto">
+    <img src="billeder/menukort.webp" alt="Krabbesøstres menukort på et forvitret træbord ved siden af en sten og en krukke med markblomster." width="1126" height="633" loading="lazy">
+    <figcaption class="wrap">Kortet, som det ligger på bordet</figcaption>
+  </figure>
+
+  <div class="wrap">
+    <div class="plakat" style="margin-top:clamp(2rem,4vw,3rem)">
+      <div class="plakat__ret" style="border-top:var(--rule) solid var(--line)">
+        <h3 class="plakat__navn">Krabbekløer</h3>
+        <p class="plakat__om">Kogte, med en dressing og en kniv, der er skarpere end den ser ud. Resten knækker du selv.</p>
+      </div>
+      <div class="plakat__ret">
+        <h3 class="plakat__navn">Håndpillede rejer</h3>
+        <p class="plakat__om">En skål rejer og en kvist dild. Til dem, der hellere vil spise end knække.</p>
+      </div>
+      <div class="plakat__ret">
+        <h3 class="plakat__navn">Røget sild</h3>
+        <p class="plakat__om">Med rå æggeblomme, dressing og radiser. Vores mormors ret, næsten som hun lavede den.</p>
+      </div>
+      <p class="plakat__fod">Alt serveres med brød og dressing</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ K ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast K, billeder uden mad</p>
+    <h2>Rummet bag menuen</h2>
+    <p class="t-om">Menuen ligger oven på et billede, og billedet skifter, alt efter hvilken ret man peger på eller trykker. Teksten bliver stående, mens rummet bagved forandrer sig: havet, vinduet, redskabshuset, disken. Der er stadig ingen mad at se, men skærmen er fuld af sted. På en telefon fylder den hele bredden, og man trykker sig igennem.</p>
+
+    <div class="rum" id="rumK">
+      <div class="rum__lag" id="rumLag"></div>
+      <div class="rum__indhold">
+        <p class="rum__top">Menukortet</p>
+        <ul class="rum__liste" id="rumListe"></ul>
+        <p class="rum__om" id="rumOm"></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -822,6 +988,63 @@
     });
 
     start();
+  })();
+
+  /* ==========================================================
+     K. Rummet bag menuen. Teksten står stille, billedet skifter.
+     ========================================================== */
+  (function(){
+    var rum   = document.getElementById("rumK");
+    var lag   = document.getElementById("rumLag");
+    var liste = document.getElementById("rumListe");
+    var om    = document.getElementById("rumOm");
+    if (!rum || !lag) return;
+
+    var RUM = [
+      {navn:"Krabbekløer", fil:"skilt.webp", alt:"Det grønne hus i Thorupstrand med Krabbesøstres skilt.",
+       om:"Kogte krabbekløer, en dressing og en kniv. Fanget i vandet, du kan se herfra."},
+      {navn:"Håndpillede rejer", fil:"sostrene-vindue.webp", alt:"Søstrene i køkkenvinduet.",
+       om:"Pillet i hånden, ikke i maskine, af de to der står i vinduet."},
+      {navn:"Røget sild", fil:"skur.webp", alt:"Loftet i redskabshuset med ophængte garn.",
+       om:"Med rå æggeblomme, dressing og radiser. Mormors ret, under fars garn."},
+      {navn:"Til at drikke", fil:"sister-ii.webp", alt:"Ragnhild ved disken med citroner og vinflasker.",
+       om:"Vin fra Sydafrika, New Zealand og Bourgogne. Øl fra Hancock og Thy."}
+    ];
+
+    RUM.forEach(function(r, i){
+      var b = document.createElement("img");
+      b.src = "billeder/" + r.fil; b.alt = r.alt;
+      if (i > 0) b.loading = "lazy";
+      b.dataset.nr = i;
+      if (i === 0) b.classList.add("frem");
+      lag.appendChild(b);
+
+      var li = document.createElement("li");
+      var k = document.createElement("button");
+      k.type = "button"; k.className = "rum__valg"; k.dataset.nr = i;
+      k.textContent = r.navn;
+      if (i === 0) k.classList.add("frem");
+      li.appendChild(k); liste.appendChild(li);
+    });
+
+    function vis(i){
+      lag.querySelectorAll("img").forEach(function(e){
+        e.classList.toggle("frem", +e.dataset.nr === i);
+      });
+      liste.querySelectorAll(".rum__valg").forEach(function(e){
+        e.classList.toggle("frem", +e.dataset.nr === i);
+      });
+      om.textContent = RUM[i].om;
+      om.classList.add("frem");
+    }
+
+    liste.querySelectorAll(".rum__valg").forEach(function(k){
+      var i = +k.dataset.nr;
+      k.addEventListener("pointerenter", function(e){ if (e.pointerType === "mouse") vis(i); });
+      k.addEventListener("click", function(){ vis(i); });
+      k.addEventListener("focus", function(){ vis(i); });
+    });
+    vis(0);
   })();
 
 })();
