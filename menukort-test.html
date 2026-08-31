@@ -185,6 +185,113 @@
 @media (prefers-reduced-motion:reduce){
   .maerke,.noegle li,.zoom__rude img,.lup__glas{transition:none}
 }
+
+/* ============================================================
+   UDEN MAD PÅ. Tre opstillinger helt uden fotos af retterne.
+   Alle tre er bygget til at fungere i én spalte på en telefon.
+   ============================================================ */
+
+/* --- F. Plakaten. Kun typografi, sat stort. --- */
+.plakat{max-width:38rem;margin:clamp(2.5rem,5vw,4rem) auto 0;text-align:center}
+.plakat__top{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);margin:0;
+}
+.plakat__streg{width:2.5rem;height:1px;background:var(--crab);margin:clamp(1.5rem,3vw,2.25rem) auto;border:0}
+.plakat__ret{padding-block:clamp(1.75rem,4vw,2.75rem)}
+.plakat__ret + .plakat__ret{border-top:var(--rule) solid var(--line)}
+.plakat__navn{
+  font-family:var(--text);font-weight:300;text-transform:none;
+  font-size:clamp(2.1rem,8.5vw,3.6rem);line-height:1.05;
+  letter-spacing:-.025em;margin:0;text-wrap:balance;
+}
+.plakat__om{
+  margin:.85rem auto 0;max-width:34ch;
+  font-size:clamp(.95rem,2.6vw,1.05rem);line-height:1.55;color:var(--ink-soft);
+}
+.plakat__afsnit{margin-top:clamp(2.75rem,6vw,4rem)}
+.plakat__titel{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 1.25rem;
+}
+.plakat__raekke{
+  font-size:clamp(1.05rem,3.4vw,1.25rem);line-height:1.9;
+  color:var(--ink-soft);margin:0;
+}
+.plakat__fod{
+  margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.35rem;
+  border-top:var(--rule) solid var(--line);
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* --- G. Ordene. Ingredienserne træder frem ét ord ad gangen. --- */
+.ord{max-width:44rem;margin:clamp(2.5rem,5vw,4rem) auto 0;border-top:var(--rule) solid var(--line)}
+.ord__ret{
+  width:100%;display:block;text-align:left;
+  background:none;border:0;border-bottom:var(--rule) solid var(--line);
+  padding:clamp(1.4rem,3.5vw,2rem) 0;cursor:pointer;color:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.ord__navn{
+  font-family:var(--text);font-weight:400;text-transform:none;
+  font-size:clamp(1.5rem,5.5vw,2.15rem);line-height:1.15;letter-spacing:-.015em;
+  margin:0;transition:color .35s ease;
+}
+.ord__ret:hover .ord__navn,.ord__ret.aaben .ord__navn{color:var(--crab)}
+.ord__liste{
+  margin:.9rem 0 0;padding:0;list-style:none;
+  display:flex;flex-wrap:wrap;gap:.35rem .55rem;
+}
+.ord__liste li{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);
+  opacity:0;transform:translateY(.45rem);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.ord__liste li::after{content:"·";margin-left:.55rem;opacity:.5}
+.ord__liste li:last-child::after{content:""}
+.ord__ret.aaben .ord__liste li{opacity:1;transform:none}
+.ord__vink{
+  margin-top:.75rem;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  opacity:.6;transition:opacity .3s ease;
+}
+.ord__ret.aaben .ord__vink{opacity:0}
+/* med mus opdager man det ved at pege, saa hintet er kun til fingre */
+@media (hover:hover){.ord__vink{display:none}}
+
+/* --- H. Guiden. To spørgsmål, ét svar. --- */
+.guide{max-width:36rem;margin:clamp(2.5rem,5vw,4rem) auto 0;text-align:center;min-height:22rem}
+.guide__trin{display:none}
+.guide__trin.vis{display:block;animation:guideind .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes guideind{from{opacity:0;transform:translateY(.9rem)}to{opacity:1;transform:none}}
+.guide__sp{
+  font-family:var(--text);font-weight:300;text-transform:none;
+  font-size:clamp(1.5rem,5.5vw,2.3rem);line-height:1.25;letter-spacing:-.015em;
+  margin:0 auto clamp(2rem,4.5vw,3rem);max-width:20ch;
+}
+.guide__valg{display:flex;flex-direction:column;gap:.75rem}
+@media (min-width:620px){.guide__valg{flex-direction:row;justify-content:center}}
+.guide__knap{
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:1.15rem 1.6rem;border:1px solid var(--ink);background:transparent;
+  color:var(--ink);cursor:pointer;
+  transition:background .3s ease,color .3s ease;
+}
+.guide__knap:hover{background:var(--ink);color:var(--paper)}
+.guide__svarnavn{
+  font-family:var(--text);font-weight:300;text-transform:none;
+  font-size:clamp(2rem,7.5vw,3.2rem);line-height:1.1;letter-spacing:-.02em;
+  margin:0 0 1rem;color:var(--crab);
+}
+.guide__svarom{margin:0 auto;max-width:36ch;font-size:1.05rem;line-height:1.6;color:var(--ink-soft)}
+.guide__igen{margin-top:clamp(2rem,4vw,2.75rem)}
 </style>
 </head>
 <body>
@@ -209,8 +316,8 @@
 <section class="t-top">
   <div class="wrap">
     <p class="t-nr">Udkast</p>
-    <h1>Fem måder at vise menuen</h1>
-    <p>Alle fem bygger på det samme billede af hele bordet. De to første kender du, de tre nederste er nye. Sig hvilken vej der føles rigtig, hvad der skal skrues på, og hvad der kan smides væk. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
+    <h1>Otte måder at vise menuen</h1>
+    <p>De fem første bygger på det samme billede af hele bordet. De tre nederste, F, G og H, er helt uden fotos af maden, så teorien om at madbilleder ikke hjælper kan afprøves side om side. Sig hvilken vej der føles rigtig, hvad der skal skrues på, og hvad der kan smides væk. Siden er ikke linket fra hjemmesiden, og søgemaskiner er bedt om at lade den være.</p>
   </div>
 </section>
 
@@ -314,6 +421,67 @@
     </div>
     <p class="lup__hint" id="lupHint">Før musen hen over bordet</p>
     <ol class="noegle" id="noegleE" style="max-width:46rem;margin-inline:auto"></ol>
+  </div>
+</section>
+
+
+<!-- ============ F ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast F, uden mad på</p>
+    <h2>Plakaten</h2>
+    <p class="t-om">Ingen billeder overhovedet. Kun retternes navne, sat så stort at de bliver til noget i sig selv. Teorien er, at et fotografi låser fantasien fast på præcis den portion, mens ordet "krabbekløer" i tre centimeters højde lader gæsten forestille sig sin egen. Den er samtidig den letteste side i hele testen: der er ingenting at hente.</p>
+
+    <div class="plakat">
+      <p class="plakat__top">Menukort</p>
+      <hr class="plakat__streg">
+
+      <div class="plakat__ret">
+        <h3 class="plakat__navn">Krabbekløer</h3>
+        <p class="plakat__om">Kogte, med en dressing og en kniv, der er skarpere end den ser ud. Resten knækker du selv.</p>
+      </div>
+      <div class="plakat__ret">
+        <h3 class="plakat__navn">Håndpillede rejer</h3>
+        <p class="plakat__om">En skål rejer og en kvist dild. Til dem, der hellere vil spise end knække.</p>
+      </div>
+      <div class="plakat__ret">
+        <h3 class="plakat__navn">Røget sild</h3>
+        <p class="plakat__om">Med rå æggeblomme, dressing og radiser. Vores mormors ret, næsten som hun lavede den.</p>
+      </div>
+
+      <div class="plakat__afsnit">
+        <p class="plakat__titel">Til sidst</p>
+        <p class="plakat__raekke">Valnøddetærte<br>Chokoladetærte</p>
+      </div>
+      <div class="plakat__afsnit">
+        <p class="plakat__titel">Til at drikke</p>
+        <p class="plakat__raekke">Øl fra Hancock og Thy<br>Vin fra Sydafrika, New Zealand og Bourgogne<br>Kaffe, the og sodavand</p>
+      </div>
+
+      <p class="plakat__fod">Alt serveres med brød og dressing</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ G ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast G, uden mad på</p>
+    <h2>Ordene</h2>
+    <p class="t-om">Her gør ordene arbejdet i stedet for billedet. Tryk på en ret, og det, den består af, træder frem ét ord ad gangen. Sidste ord er ikke en ingrediens, men det man sidder tilbage med, og det er hele pointen: et foto kan vise en klo, men ikke en eftermiddag. Virker med både mus og finger.</p>
+
+    <div class="ord" id="ordG"></div>
+  </div>
+</section>
+
+<!-- ============ H ============ -->
+<section class="t-sek">
+  <div class="wrap">
+    <p class="t-nr">Udkast H, uden mad på</p>
+    <h2>Hvad er du for en?</h2>
+    <p class="t-om">To spørgsmål, og så peger den på din ret. Den bruger sidens egen skelnen mellem dem, der vil slås med skallerne, og dem, der bare vil spise. I stedet for at vise gæsten al maden på én gang, spørger den, hvem gæsten er, og lader hende selv nå frem til svaret. Det er den eneste af de otte, hvor gæsten træffer et valg, inden hun ser en ret.</p>
+
+    <div class="guide" id="guideH"></div>
   </div>
 </section>
 
@@ -554,6 +722,106 @@
     boks.addEventListener("pointermove", flyt);
     boks.addEventListener("pointerdown", flyt);
     boks.addEventListener("pointerleave", ud);
+  })();
+
+  /* ==========================================================
+     G. Ordene. Ingredienserne træder frem ét ad gangen.
+     ========================================================== */
+  (function(){
+    var boks = document.getElementById("ordG");
+    if (!boks) return;
+    var RETTER_ORD = [
+      {navn:"Krabbekløer", ord:["kogte","citron","dild","dressing","en kniv","og al den tid det tager"]},
+      {navn:"Håndpillede rejer", ord:["pillet i hånden","en kvist dild","citron","brød"]},
+      {navn:"Røget sild", ord:["røget","rå æggeblomme","radiser","dressing"]},
+      {navn:"Valnøddetærte", ord:["valnødder","creme fraiche"]}
+    ];
+
+    RETTER_ORD.forEach(function(r){
+      var k = document.createElement("button");
+      k.type = "button"; k.className = "ord__ret";
+      k.setAttribute("aria-expanded","false");
+      var ul = r.ord.map(function(o,i){
+        return '<li style="transition-delay:' + (i*95) + 'ms">' + o + "</li>";
+      }).join("");
+      k.innerHTML = '<h3 class="ord__navn">' + r.navn + "</h3>" +
+                    '<ul class="ord__liste">' + ul + "</ul>" +
+                    '<p class="ord__vink">Tryk</p>';
+      function saet(aaben){
+        k.classList.toggle("aaben", aaben);
+        k.setAttribute("aria-expanded", aaben ? "true" : "false");
+      }
+      /* Med mus styrer markøren det. Med finger og tastatur gør trykket.
+         Holdes de to ikke adskilt, åbner markøren, og klikket lukker
+         straks igen, så der aldrig sker noget. */
+      k.addEventListener("pointerenter", function(e){ if (e.pointerType === "mouse") saet(true); });
+      k.addEventListener("pointerleave", function(e){ if (e.pointerType === "mouse") saet(false); });
+      k.addEventListener("click", function(e){
+        if (e.pointerType === "mouse") return;
+        saet(!k.classList.contains("aaben"));
+      });
+      boks.appendChild(k);
+    });
+  })();
+
+  /* ==========================================================
+     H. Guiden. To spørgsmål, ét svar.
+     ========================================================== */
+  (function(){
+    var boks = document.getElementById("guideH");
+    if (!boks) return;
+
+    var SVAR = {
+      klo:  {navn:"Krabbekløer",
+             om:"Du får et fad, en kniv, en dressing og al den tid, det tager. Ingen piller for dig, det er hele pointen."},
+      reje: {navn:"Håndpillede rejer",
+             om:"En skål rejer og en kvist dild. Pillet i hånden, ikke i maskine, så du kan gå direkte til sagen."},
+      sild: {navn:"Røget sild",
+             om:"Med rå æggeblomme, dressing og radiser. Vores mormors ret, næsten som hun lavede den."}
+    };
+
+    function trin(indhold){
+      var d = document.createElement("div");
+      d.className = "guide__trin vis";
+      d.innerHTML = indhold;
+      boks.innerHTML = "";
+      boks.appendChild(d);
+      var f = d.querySelector("button");
+      if (f) f.focus({preventScroll:true});
+    }
+
+    function knapper(liste){
+      return '<div class="guide__valg">' + liste.map(function(v){
+        return '<button type="button" class="guide__knap" data-gaa="' + v.gaa + '">' + v.tekst + "</button>";
+      }).join("") + "</div>";
+    }
+
+    function start(){
+      trin('<p class="guide__sp">Vil du slås med skallerne, eller vil du bare spise?</p>' +
+           knapper([{tekst:"Jeg vil slås", gaa:"klo"},{tekst:"Jeg vil spise", gaa:"to"}]));
+    }
+    function to(){
+      trin('<p class="guide__sp">Skal det være køligt og enkelt, eller må der gerne ske noget mere?</p>' +
+           knapper([{tekst:"Køligt og enkelt", gaa:"reje"},{tekst:"Der må gerne ske noget", gaa:"sild"}]));
+    }
+    function svar(n){
+      var s = SVAR[n];
+      trin('<p class="plakat__top">Så skal du have</p>' +
+           '<h3 class="guide__svarnavn">' + s.navn + "</h3>" +
+           '<p class="guide__svarom">' + s.om + "</p>" +
+           '<div class="guide__igen"><button type="button" class="t-knap" data-gaa="start">Prøv igen</button></div>');
+    }
+
+    boks.addEventListener("click", function(e){
+      var k = e.target.closest("[data-gaa]");
+      if (!k) return;
+      var g = k.dataset.gaa;
+      if (g === "start") start();
+      else if (g === "to") to();
+      else svar(g);
+    });
+
+    start();
   })();
 
 })();
