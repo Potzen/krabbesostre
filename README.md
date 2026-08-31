@@ -164,8 +164,18 @@ Nytårskasse og Book bord, og under 620 pixels viger ordet Krabbesøstre for
 den lille krabbe, så der bliver plads. Tilføjes et punkt mere til menuen,
 skal det tjekkes på en telefon, om der stadig er plads.
 
-Delingsbilledet er `billeder/og-logo.webp`, logoet på papirbunden i 1200
-gange 630 pixels, som er det format Facebook og beskedapps forventer.
+Delingsbilledet er `billeder/og-logo.jpg`, logoet på papirbunden i 1200
+gange 630 pixels. Det skal blive ved med at være **JPEG**, ikke WebP:
+Facebook, Messenger og flere beskedapps viser ikke WebP i deres
+forhåndsvisning, og de melder ikke fejl, billedet udebliver bare.
+Nytårssiden og kontrolrapporten bruger `billeder/og.jpg`.
+
+Adresserne i `og:image` er absolutte og peger på krabbesostre.dk. Så
+længe siden vises fra et andet sted, fx GitHub Pages, kan et delt link
+ikke hente billedet, og forhåndsvisningen viser kun titel og adresse.
+Det retter sig selv ved domæneskiftet. Når det er sket, skal Facebook
+bedes hente siden igen på deres Sharing Debugger, for de gemmer den
+gamle udgave i op til en måned.
 
 ## Bevægelse
 
