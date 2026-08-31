@@ -197,77 +197,40 @@ p:last-child{margin-bottom:0}
 .nav .nav__book:hover{background:currentColor}
 .header:not(.is-stuck) .nav__book:hover{color:var(--ink)}
 .header.is-stuck .nav__book:hover{color:var(--paper)}
-@media (max-width:760px){.nav a:not(.nav__book):not(.nav__menu){display:none}}
-@media (max-width:400px){.nav a.nav__menu{display:none}}
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero{
-  position:relative;
-  min-height:100svh;
-  display:flex;align-items:flex-end;
-  color:var(--paper);
-  overflow:hidden;
+@media (max-width:760px){.nav a:not(.nav__book):not(.nav__menu):not(.nav__nytaar){display:none}}
+/* Paa smaa skaerme viger ordet i menulinjen for logoet lige nedenunder,
+   saa der bliver plads til nytaarskassen. Krabben bliver staaende. */
+@media (max-width:620px){
+  .header__mark{display:none}
+  .nav{gap:.9rem}
+  .nav a{font-size:.7rem;letter-spacing:.11em}
+  .nav .nav__book{padding:.5rem .8rem}
 }
-.hero__media{position:absolute;inset:0}
-.hero__media img{width:100%;height:100%;object-fit:cover;object-position:62% 58%}
-/* To lag: en smal skygge foroven til menuen, og en varm bund til teksten.
-   Midten af billedet røres ikke, så maden bliver ved med at være solbeskinnet. */
-.hero__media::after{
-  content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(to bottom,rgba(14,11,6,.44) 0%,rgba(14,11,6,.16) 9%,rgba(14,11,6,0) 19%),
-    linear-gradient(to top,rgba(14,11,6,.90) 0%,rgba(14,11,6,.72) 18%,rgba(14,11,6,.36) 38%,rgba(14,11,6,0) 60%),
-    linear-gradient(100deg,rgba(14,11,6,.66) 0%,rgba(14,11,6,.38) 34%,rgba(14,11,6,0) 62%);
-}
-@media (max-width:699px){
-  .hero__media::after{
-    background:
-      linear-gradient(to bottom,rgba(14,11,6,.44) 0%,rgba(14,11,6,0) 18%),
-      linear-gradient(to top,rgba(14,11,6,.92) 0%,rgba(14,11,6,.76) 22%,rgba(14,11,6,.40) 44%,rgba(14,11,6,0) 66%);
-  }
-}
-.hero__inner{
-  position:relative;width:100%;
-  max-width:var(--max);margin-inline:auto;
-  padding:0 var(--pad) clamp(3.25rem,7vw,5.5rem);
-}
-.hero__title{
-  font-variation-settings:"wdth" 72,"wght" 640;
-  font-size:clamp(2.85rem,10.2vw,8.5rem);
-  line-height:.86;
-  letter-spacing:-.02em;
-  margin:0 0 clamp(1.25rem,2.5vw,1.75rem);
-  color:var(--paper);
-}
-.hero__lede{
-  max-width:34ch;
-  font-size:clamp(1.125rem,1.2vw + .85rem,1.55rem);
-  line-height:1.45;font-weight:300;
-  color:rgba(246,242,233,.94);
-  margin:0 0 clamp(1.75rem,3vw,2.5rem);
-}
-.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
-.hero__meta{
-  display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;
-  margin-top:clamp(2rem,4vw,3rem);
-  padding-top:1.35rem;
-  border-top:1px solid rgba(246,242,233,.24);
-  font-family:var(--display);
-  font-variation-settings:"wdth" 92,"wght" 450;
-  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
-  color:rgba(246,242,233,.8);
-}
-@media (max-width:699px){.hero__meta{display:none}}
 
 /* ============================================================
    MANIFEST
    ============================================================ */
-.manifest{text-align:center}
+/* Aabningen. Logoet er sidens overskrift og det foerste man moeder,
+   saa der skal luft nok over det til den faste menulinje. */
+.manifest{text-align:center;padding-top:clamp(7.5rem,14vw,11rem)}
 .manifest__logo{
-  width:clamp(9.5rem,19vw,15rem);height:auto;
   margin:0 auto clamp(2rem,4vw,3.25rem);
+  font-size:0;                       /* h1 skal ikke saette linjehoejde */
+}
+.manifest__logo img{
+  width:clamp(11rem,23vw,18rem);height:auto;
+  margin-inline:auto;
+}
+.manifest__fakta{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:.55rem 1.75rem;
+  max-width:46rem;margin:clamp(2.5rem,5vw,3.5rem) auto 0;
+  padding-top:1.35rem;
+  border-top:var(--rule) solid var(--line);
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);
 }
 .manifest__quote{
   font-family:var(--text);
@@ -722,71 +685,9 @@ p:last-child{margin-bottom:0}
 }
 
 /* ============================================================
-   UNDERSIDE, nytårskasse
+   SPOT OG DET MED SMAAT. Bruges af nytaarshenvisningen paa
+   forsiden og af det med smaat paa nytaarssiden.
    ============================================================ */
-.sidehero{
-  position:relative;
-  min-height:clamp(20rem,56vh,32rem);
-  display:flex;align-items:flex-end;
-  color:var(--paper);
-  overflow:hidden;
-}
-.sidehero__media{position:absolute;inset:0}
-.sidehero__media img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
-.sidehero__media::after{
-  content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(to bottom,rgba(14,11,6,.48) 0%,rgba(14,11,6,0) 20%),
-    linear-gradient(to top,rgba(14,11,6,.92) 0%,rgba(14,11,6,.68) 22%,rgba(14,11,6,.30) 44%,rgba(14,11,6,0) 66%),
-    linear-gradient(100deg,rgba(14,11,6,.60) 0%,rgba(14,11,6,.32) 34%,rgba(14,11,6,0) 62%);
-}
-.sidehero__inner{
-  position:relative;width:100%;max-width:var(--max);margin-inline:auto;
-  padding:0 var(--pad) clamp(2.5rem,5vw,4rem);
-}
-.sidehero h1{
-  font-variation-settings:"wdth" 72,"wght" 640;
-  font-size:clamp(2.4rem,7.5vw,5.5rem);
-  line-height:.9;letter-spacing:-.018em;color:var(--paper);
-  margin:0 0 .9rem;
-}
-.sidehero__lede{
-  max-width:38ch;font-size:clamp(1.1rem,1.1vw + .85rem,1.5rem);
-  line-height:1.45;font-weight:300;color:rgba(246,242,233,.94);margin:0;
-}
-
-/* tilbudsblok */
-.tilbud{display:grid;gap:clamp(2.5rem,5vw,4.5rem);grid-template-columns:1fr}
-@media (min-width:900px){
-  .tilbud{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
-}
-.tilbud__body p{max-width:50ch}
-.tilbud h2{margin-bottom:clamp(1.25rem,2.5vw,1.75rem)}
-
-/* liste over hvad der er i kassen */
-.indhold-liste{list-style:none;margin:clamp(1.5rem,3vw,2rem) 0;padding:0}
-.indhold-liste li{
-  padding:.85rem 0 .85rem 1.9rem;
-  border-top:var(--rule) solid var(--line);
-  position:relative;font-size:1.02rem;line-height:1.5;
-}
-.indhold-liste li:last-child{border-bottom:var(--rule) solid var(--line)}
-.indhold-liste li::before{
-  content:"";position:absolute;left:.15rem;top:1.42em;
-  width:.6rem;height:1px;background:var(--crab);
-}
-
-/* faktalinje */
-.fakta-linje{
-  display:flex;flex-wrap:wrap;gap:.5rem 2rem;
-  padding:1.1rem 0;margin:clamp(1.5rem,3vw,2rem) 0;
-  border-top:var(--rule) solid var(--line);
-  border-bottom:var(--rule) solid var(--line);
-  font-family:var(--display);
-  font-variation-settings:"wdth" 92,"wght" 450;
-  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
-}
-
 /* det med småt */
 .smaat{background:var(--paper-2)}
 .smaat__grid{
@@ -820,20 +721,6 @@ p:last-child{margin-bottom:0}
 @media (prefers-reduced-motion: no-preference){
   @keyframes aande{from{transform:scale(1.14)}to{transform:scale(1.07)}}
   @keyframes stig{from{opacity:0;transform:translateY(1.1rem)}to{opacity:1;transform:none}}
-
-  .hero__media img{transform:scale(1.07);animation:aande 2.6s cubic-bezier(.16,.7,.2,1)}
-  .hero__inner>*{animation:stig .85s cubic-bezier(.2,.8,.2,1) backwards}
-  .hero__inner>:nth-child(1){animation-delay:.18s}
-  .hero__inner>:nth-child(2){animation-delay:.3s}
-  .hero__inner>:nth-child(3){animation-delay:.46s}
-  .hero__inner>:nth-child(4){animation-delay:.62s}
-  .hero__inner>:nth-child(5){animation-delay:.78s}
-
-  .sidehero__media img{transform:scale(1.05);animation:aande 2.2s cubic-bezier(.16,.7,.2,1)}
-  .sidehero__inner>*{animation:stig .85s cubic-bezier(.2,.8,.2,1) backwards}
-  .sidehero__inner>:nth-child(1){animation-delay:.15s}
-  .sidehero__inner>:nth-child(2){animation-delay:.27s}
-  .sidehero__inner>:nth-child(3){animation-delay:.42s}
 }
 
 /* ============================================================

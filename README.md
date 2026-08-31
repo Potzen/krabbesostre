@@ -106,7 +106,7 @@ læser. Tre ting skal holdes ved lige i det:
 
 1. **Åbningstiderne** står med sæsonens datoer under `openingHoursSpecification`.
    De skal opdateres, når datoerne for næste sommer er på plads. Det samme gælder
-   teksten i `hero__meta` og under Praktisk.
+   teksten i `manifest__fakta` øverst på forsiden og under Praktisk.
 2. **Spørgsmål og svar** under Praktisk findes to steder: som synlig tekst og som
    `FAQPage` i de strukturerede data. Retter I det ene, skal I rette det andet,
    ellers står der noget forskelligt til gæsten og til Google.
@@ -146,6 +146,26 @@ Tre ting at holde sig for øje:
 Kortet under "Sådan finder I os" hentes først hos Google, når gæsten klikker
 "Vis kort". Indtil da ingen cookies, derfor ingen cookiebanner. Tjek én gang
 live, at Google tegner kortet; sandkassen her har ikke adgang til Google.
+
+## Forsidens åbning
+
+Der er intet topbillede. Siden begynder med logoet, som samtidig er sidens
+`h1`, med navnet i billedets alt-tekst. Derfor må logoet aldrig blive et
+almindeligt `img` igen uden at overskriften flytter et andet sted hen; en
+side uden `h1` står svagt i Google.
+
+Fordi der ikke er noget mørkt billede at ligge oven på, starter menulinjen
+i sin lyse tilstand med `class="header is-stuck"` skrevet direkte i HTML.
+Fjernes den klasse, bliver menuen hvid skrift på lyst papir og forsvinder.
+
+Der er med vilje ingen knapper i åbningen. Alt ligger i menulinjen. Bemærk
+at menuen skjuler punkter på små skærme: under 760 pixels vises kun Menu,
+Nytårskasse og Book bord, og under 620 pixels viger ordet Krabbesøstre for
+den lille krabbe, så der bliver plads. Tilføjes et punkt mere til menuen,
+skal det tjekkes på en telefon, om der stadig er plads.
+
+Delingsbilledet er `billeder/og-logo.webp`, logoet på papirbunden i 1200
+gange 630 pixels, som er det format Facebook og beskedapps forventer.
 
 ## Bevægelse
 

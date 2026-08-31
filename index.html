@@ -13,14 +13,14 @@
 <meta property="og:title" content="Krabbesøstre, Thorupstrand">
 <meta property="og:description" content="Krabbekløer, håndpillede rejer og røget sild i vores fars gamle redskabshus ved Vesterhavet, hundrede meter fra havet.">
 <meta property="og:url" content="https://krabbesostre.dk/">
-<meta property="og:image" content="https://krabbesostre.dk/billeder/og.webp">
+<meta property="og:image" content="https://krabbesostre.dk/billeder/og-logo.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#14130E">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/archivo-var.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/newsreader-var.woff2" crossorigin>
-<link rel="preload" as="image" href="billeder/hero.webp" media="(min-width: 700px)">
-<link rel="preload" as="image" href="billeder/hero-mobil.webp" media="(max-width: 699px)">
 
 <link rel="icon" type="image/png" sizes="64x64" href="billeder/favicon.png">
 <link rel="apple-touch-icon" href="billeder/apple-touch-icon.png">
@@ -30,7 +30,7 @@
 <body>
 <a class="skip" href="#indhold">Spring til indhold</a>
 
-<header class="header" id="header">
+<header class="header is-stuck" id="header">
   <a class="header__brand" href="#top" aria-label="Krabbesøstre, til toppen">
     <span class="header__crab" aria-hidden="true">
       <img class="krabbe-lys" src="billeder/krabbe-lys.webp" alt="" width="120" height="120">
@@ -42,47 +42,29 @@
     <a class="nav__menu" href="#menu">Menu</a>
     <a href="#historien">Historien</a>
     <a href="#praktisk">Praktisk</a>
-    <a href="nytaarskasse.html">Nytårskasse</a>
+    <a class="nav__nytaar" href="nytaarskasse.html">Nytårskasse</a>
     <a class="nav__book" href="https://krabbesostre.dk/bordreservation">Book bord</a>
   </nav>
 </header>
 
 <main id="indhold">
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="hero__media">
-    <picture>
-      <source media="(max-width:699px)" srcset="billeder/hero-mobil.webp">
-      <img src="billeder/hero.webp" alt="Skål med kogte krabbekløer, citron og dild foran en buket markblomster." fetchpriority="high" width="2000" height="1125">
-    </picture>
-  </div>
-  <div class="hero__inner">
-    <p class="eyebrow eyebrow--light">Thorupstrand</p>
-    <h1 class="hero__title">Krabbesøstre</h1>
-    <p class="hero__lede">Krabbekløer, rejer og røget sild i vores fars gamle redskabshus, hundrede meter fra havet, hvor de blev fanget.</p>
-    <div class="hero__actions">
-      <a class="btn btn--light" href="https://krabbesostre.dk/bordreservation">Book bord <span class="arw" aria-hidden="true">→</span></a>
-      <a class="btn btn--outline-light" href="#menu">Se menuen</a>
-      <a class="btn btn--outline-light" href="nytaarskasse.html">Bestil nytårskasse</a>
-    </div>
-    <div class="hero__meta">
-      <span>Thorupstrandvej 323, 9690 Fjerritslev</span>
-      <span>Dagligt 12 til 21 i sæsonen</span>
-      <span>Åbner igen sommeren 2027</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MANIFEST ============ -->
-<section class="section manifest">
+<!-- ============ ÅBNING ============ -->
+<section class="section manifest" id="top">
   <div class="wrap">
-    <img class="manifest__logo rv" src="billeder/logo.webp" alt="Krabbesøstres logo: to søstre der holder om en krabbe." width="460" height="623" loading="lazy">
+    <h1 class="manifest__logo rv">
+      <img src="billeder/logo.webp" alt="Krabbesøstre, Thorupstrand" width="460" height="623" fetchpriority="high">
+    </h1>
     <p class="manifest__quote rv">Her skal krabbekløerne ikke bare nydes. De skal knækkes.</p>
     <div class="manifest__body rv">
       <p>Du får et fad, en kniv, en dressing og al den tid, det tager. Ingen piller for dig; det er hele pointen. Når kløen endelig giver slip, smager den af mere end krabbe. Den smager af eftermiddag.</p>
       <p>Har man ikke lyst til at slås med skallerne, står der en skål håndpillede rejer klar i stedet.</p>
     </div>
+    <p class="manifest__fakta rv">
+      <span>Thorupstrandvej 323, 9690 Fjerritslev</span>
+      <span>Dagligt 12 til 21 i sæsonen</span>
+      <span>Åbner igen sommeren 2027</span>
+    </p>
   </div>
 </section>
 
@@ -388,7 +370,7 @@
       <div>
         <h3>Bord</h3>
         <p><a href="https://krabbesostre.dk/bordreservation">Book bord</a><br>
-           <a href="nytaarskasse.html">Nytårskasse</a></p>
+           <a class="nav__nytaar" href="nytaarskasse.html">Nytårskasse</a></p>
       </div>
     </div>
 
@@ -582,15 +564,6 @@
 (function(){
   "use strict";
 
-  /* Header: fast baggrund efter hero */
-  var header = document.getElementById("header");
-  var hero = document.getElementById("top");
-  if (header && hero && "IntersectionObserver" in window) {
-    new IntersectionObserver(function(entries){
-      header.classList.toggle("is-stuck", !entries[0].isIntersecting);
-    }, {rootMargin: "-80% 0px 0px 0px"}).observe(hero);
-  }
-
   /* Blid indtoning ved scroll */
   var items = document.querySelectorAll(".rv");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -607,24 +580,6 @@
       });
     }, {rootMargin: "0px 0px -12% 0px", threshold: 0.06});
     items.forEach(function(el){ io.observe(el); });
-  }
-
-  /* Blid parallakse paa topbilledet. Billedet er skaleret en anelse op,
-     saa der aldrig opstaar en kant, naar det glider. */
-  var topBillede = document.querySelector(".hero__media img, .sidehero__media img");
-  if (topBillede && !reduce) {
-    var venter = false;
-    addEventListener("scroll", function(){
-      if (venter) return;
-      venter = true;
-      requestAnimationFrame(function(){
-        var y = window.scrollY;
-        if (y < innerHeight * 1.3) {
-          topBillede.style.transform = "translateY(" + (y * 0.16).toFixed(1) + "px) scale(1.07)";
-        }
-        venter = false;
-      });
-    }, {passive: true});
   }
 
   /* Kortet indlæses først på klik, så der ligger ingen Google-cookies
