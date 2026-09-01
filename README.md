@@ -194,10 +194,48 @@ krabbe.webp og krabbe-lys.webp (mærket i menulinjen og favicon).
 Billeder der stadig mangler: gæster ved bordene indenfor, huset udefra i
 fuld figur, et lodret nærbillede af en ret til mobil, aftenlys.
 
+## Menuen
+
+Menuen er sat som en plakat: ingen fotos af retterne, navnene sat stort i
+antikva, alt centreret i én smal spalte. Baggrunden er en undersøgelse af,
+at billeder af mad ikke nødvendigvis øger lysten; et foto låser fantasien
+fast på præcis den portion, mens ordet lader gæsten forestille sig sin egen.
+Formen blev valgt blandt elleve udkast på menukort-test.html, hvor de øvrige
+ti stadig ligger, hvis I vil se dem igen eller skifte mening.
+
+Hele menuen ligger i `div class="plakat"` i index.html og styles af
+`.plakat*` i stil.css. Retterne er `.plakat__ret` med navn og beskrivelse.
+Dessert, drikkevarer og vin er `.plakat__afsnit` med en `.plakat__linje`
+per vare; det, der står med småt under en vare, altså størrelse, land eller
+tilbehør, er en `.plakat__sub` inde i linjen.
+
+Beskrivelserne på de tre retter står også i de strukturerede data nederst
+på siden som `hasMenu`. Retter I den ene, så ret den anden.
+
+Fotoerne af retterne, krabbeklor.webp, rejer.webp og sild.webp, vises ikke
+længere på siden. Filerne ligger stadig i billeder/, og krabbeklor.webp er
+bevaret i `image` i de strukturerede data, så Google fortsat har et billede
+af maden at vise i søgeresultatet, selvom siden selv er uden.
+
+## Båndet med menukortet
+
+Mellem historien og menuen ligger `figure class="band band--kort"` med
+billedet af det trykte menukort på bordet. Det skiller de to afsnit og er
+det eneste billede i menudelen.
+
+Billedet er beskåret over retterne med `.band--kort` i stil.css. Det
+fotograferede kort har priser trykt i højre kolonne, og priser står ikke på
+siden. Beskåret sådan ligger kortet som en genstand på bordet, mens selve
+menuen læses i teksten nedenunder. Ændres beskæringen, så tjek på en telefon,
+at tallene ikke kommer med igen.
+
 ## Hvis priserne skal tilbage
 
-Hver ret i index.html er en `article class="dish"`. Sæt
-`<div class="dish__price">249</div>` ind som sidste element, og ret `.dish`
-i stil.css fra `grid-template-columns:… 1fr` til `… 1fr auto`. Listerne
-bruger `<span class="row__price">55</span>`. Husk også at sætte `offers`
-tilbage i de strukturerede data nederst i index.html, hvis priserne vises.
+Hver ret i index.html er en `div class="plakat__ret"`. Sæt prisen ind som
+`<p class="plakat__pris">249</p>` efter beskrivelsen, og giv den en regel i
+stil.css i samme sprog som `.plakat__sub`. På de øvrige varer skrives prisen
+ind i `.plakat__sub` sammen med det, der allerede står der.
+
+Husk tre ting: `offers` skal tilbage i de strukturerede data nederst i
+index.html, `.band--kort` kan så beskæres mindre, så hele det trykte kort
+kan ses, og skriveregelen om priser ovenfor skal rettes.
