@@ -256,19 +256,6 @@ p:last-child{margin-bottom:0}
 .band img{width:100%;height:clamp(19rem,52vh,34rem);object-fit:cover;object-position:50% 38%}
 .band--strand img{object-position:50% 26%}
 .band--tall img{height:clamp(23rem,72vh,44rem)}
-/* Båndet med menukortet bruger sin egen fil, menukort-baand.webp, som er
-   klippet ud af menukort.webp. Ordet Menukort skal kunne læses, men det
-   trykte kort har priser i højre kolonne, og priser står ikke på siden.
-   Priserne begynder 15 pixels til højre for udsnittets kant, og retterne
-   begynder 15 pixels under det, så begge dele er ude af filen og bliver
-   aldrig sendt til gæstens browser. Skal båndet vise mere, skal der
-   klippes et nyt udsnit, ikke ændres på beskæringen her. */
-.band--kort img{height:auto;aspect-ratio:730/292}
-@media (max-width:640px){
-  /* Højere bånd på telefon. Siderne beskæres, og Menukort bliver stående,
-     fordi ordet ligger godt inde i billedet. */
-  .band--kort img{aspect-ratio:auto;height:clamp(12rem,52vw,16rem)}
-}
 .band__caption{
   position:absolute;inset:auto 0 0;
   padding:var(--pad);
@@ -345,59 +332,87 @@ p:last-child{margin-bottom:0}
    MENU
    ============================================================ */
 .menu{background:var(--paper-2)}
-.menu__head{text-align:center;margin-bottom:clamp(1rem,2vw,1.75rem)}
+.menu__head{
+  display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;
+  gap:1.5rem;margin-bottom:clamp(2.5rem,5vw,4rem);
+}
+.menu__note{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  max-width:44ch;text-align:right;line-height:1.9;
+}
+@media (max-width:640px){.menu__note{text-align:left}}
 
-/* Overskriften over Ofte spurgt under Praktisk. Stod tidligere ogsaa
-   over menuens lister, som nu er blevet til plakaten herunder. */
+.dish{
+  display:grid;
+  grid-template-columns:clamp(5.5rem,16vw,12.5rem) 1fr;
+  gap:clamp(1.25rem,3vw,2.5rem);
+  align-items:center;
+  padding-block:clamp(1.5rem,3vw,2.25rem);
+  border-top:var(--rule) solid var(--line);
+}
+.dish:last-of-type{border-bottom:var(--rule) solid var(--line)}
+.dish__img{aspect-ratio:1;overflow:hidden;background:var(--paper)}
+.dish__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.dish:hover .dish__img img{transform:scale(1.045)}
+.dish__name{margin:0 0 .35rem}
+.dish__desc{margin:0;color:var(--ink-soft);font-size:.98rem;line-height:1.5;max-width:44ch}
+.dish__price{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 80,"wght" 550;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  white-space:nowrap;
+  align-self:center;
+}
+@media (max-width:560px){
+  .dish{grid-template-columns:clamp(5.5rem,27vw,8.5rem) 1fr;row-gap:.5rem;align-items:start}
+}
+
+.lists{
+  display:grid;gap:clamp(2.5rem,5vw,4rem);
+  grid-template-columns:1fr;
+  margin-top:clamp(3rem,6vw,5rem);
+}
+@media (min-width:820px){.lists{grid-template-columns:1fr 1.15fr}}
+
 .list__title{
   font-family:var(--display);
   font-variation-settings:"wdth" 92,"wght" 600;
   font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
   margin:0 0 1.5rem;padding-bottom:.85rem;border-bottom:var(--rule) solid var(--line);
 }
-
-/* ============================================================
-   MENUEN SOM PLAKAT
-   Ingen fotos af retterne. Navnene er sat stort, så de får lov at
-   fylde selv. Alt er centreret om én smal spalte, og hele menuen
-   ligger i .plakat, så bredden kun ét sted skal rettes.
-   ============================================================ */
-.plakat{max-width:38rem;margin:0 auto;text-align:center}
-.plakat__streg{
-  width:2.5rem;height:1px;background:var(--crab);border:0;
-  margin:clamp(1.5rem,3vw,2.25rem) auto;
+.row{
+  padding-block:.62rem;
+  font-size:1.03rem;
+  border-bottom:var(--rule) solid var(--line-soft);
 }
-.plakat__ret{padding-block:clamp(1.75rem,4vw,2.75rem)}
-.plakat__ret + .plakat__ret{border-top:var(--rule) solid var(--line)}
-.plakat__navn{
-  font-family:var(--text);font-weight:300;text-transform:none;
-  font-size:clamp(2.1rem,8.5vw,3.6rem);line-height:1.05;
-  letter-spacing:-.025em;margin:0;text-wrap:balance;
+.row:last-child{border-bottom:0}
+.row__name{flex:0 1 auto}
+.row__dots{
+  flex:1 1 auto;
+  border-bottom:1px dotted rgba(20,19,14,.3);
+  transform:translateY(-.25em);
+  min-width:1.5rem;
 }
-.plakat__om{
-  margin:.85rem auto 0;max-width:34ch;
-  font-size:clamp(.95rem,2.6vw,1.05rem);line-height:1.55;color:var(--ink-soft);
+.row__price{
+  flex:0 0 auto;font-variant-numeric:tabular-nums;color:var(--ink-soft);
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.92rem;letter-spacing:.02em;
 }
-.plakat__afsnit{margin-top:clamp(2.75rem,6vw,4rem)}
-.plakat__titel{
-  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
-  font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 1.35rem;
+.row__sub{display:block;font-size:.86rem;color:var(--muted);line-height:1.4}
+@media (max-width:620px){
+  .row{justify-content:space-between;gap:1.25rem}
+  .row__dots{display:none}
 }
-.plakat__linje{
-  margin:0;padding-block:.5rem;
-  font-size:clamp(1.02rem,3.2vw,1.2rem);line-height:1.4;
-}
-.plakat__linje + .plakat__linje{border-top:var(--rule) solid var(--line-soft)}
-.plakat__sub{
-  display:block;max-width:32ch;margin:.2rem auto 0;
-  font-size:.84rem;color:var(--muted);line-height:1.5;
-}
-.plakat__fod{
-  margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.35rem;
-  border-top:var(--rule) solid var(--line);
-  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 450;
-  font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+.wine .row__price{min-width:7.5rem;text-align:right}
+.wine__head{
+  display:flex;justify-content:flex-end;gap:1rem;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 450;
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  padding-bottom:.4rem;
 }
 
 /* ============================================================
@@ -666,7 +681,7 @@ p:last-child{margin-bottom:0}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  .gallery img{transition:none}
+  .dish__img img,.gallery img{transition:none}
 }
 
 /* ============================================================

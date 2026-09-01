@@ -194,64 +194,10 @@ krabbe.webp og krabbe-lys.webp (mærket i menulinjen og favicon).
 Billeder der stadig mangler: gæster ved bordene indenfor, huset udefra i
 fuld figur, et lodret nærbillede af en ret til mobil, aftenlys.
 
-## Menuen
-
-Menuen er sat som en plakat: ingen fotos af retterne, navnene sat stort i
-antikva, alt centreret i én smal spalte. Baggrunden er en undersøgelse af,
-at billeder af mad ikke nødvendigvis øger lysten; et foto låser fantasien
-fast på præcis den portion, mens ordet lader gæsten forestille sig sin egen.
-Formen blev valgt blandt elleve udkast på menukort-test.html, hvor de øvrige
-ti stadig ligger, hvis I vil se dem igen eller skifte mening.
-
-Hele menuen ligger i `div class="plakat"` i index.html og styles af
-`.plakat*` i stil.css. Retterne er `.plakat__ret` med navn og beskrivelse.
-Dessert, drikkevarer og vin er `.plakat__afsnit` med en `.plakat__linje`
-per vare; det, der står med småt under en vare, altså størrelse, land eller
-tilbehør, er en `.plakat__sub` inde i linjen.
-
-Beskrivelserne på de tre retter står også i de strukturerede data nederst
-på siden som `hasMenu`. Retter I den ene, så ret den anden.
-
-Fotoerne af retterne, krabbeklor.webp, rejer.webp og sild.webp, vises ikke
-længere på siden. Filerne ligger stadig i billeder/, og krabbeklor.webp er
-bevaret i `image` i de strukturerede data, så Google fortsat har et billede
-af maden at vise i søgeresultatet, selvom siden selv er uden.
-
-## Båndet med menukortet
-
-Mellem historien og menuen ligger `figure class="band band--kort"` med
-billedet af det trykte menukort på bordet. Det skiller de to afsnit og er
-det eneste billede i menudelen.
-
-Båndet bruger sin egen fil, `billeder/menukort-baand.webp`, som er klippet
-ud af `billeder/menukort.webp`. Der er to hensyn, som trækker hver sin vej:
-ordet **Menukort** skal kunne læses på billedet, og de priser, der står
-trykt i kortets højre kolonne, må ikke kunne læses, for priser står ikke på
-siden.
-
-De to ting kan ikke skilles ad med et vandret snit. Kortet er fotograferet
-skråt, så den øverste pris ligger i næsten samme højde som overskriften. Der
-skæres derfor både fra højre og forneden: udsnittet er x 0 til 730 og y 128
-til 420 af originalen. Den forreste pris begynder ved x 745, og den første
-ret begynder ved y 435, så begge dele ligger uden for filen og bliver aldrig
-sendt til gæstens browser.
-
-Skal båndet vise mere, så klip et nyt udsnit med de tal for øje. Lad være
-med at løse det med `object-position` alene; det kan kun beskære i én retning
-ad gangen og kan derfor ikke holde priserne ude og overskriften inde på
-samme tid.
-
-Filen er 730 gange 292 pixels, og på en bred skærm forstørres den. Fotoet er
-blødt i forvejen, så det ses knap nok, men har I originalfotoet i højere
-opløsning, så læg det i src/ og klip et nyt bånd ud af det.
-
 ## Hvis priserne skal tilbage
 
-Hver ret i index.html er en `div class="plakat__ret"`. Sæt prisen ind som
-`<p class="plakat__pris">249</p>` efter beskrivelsen, og giv den en regel i
-stil.css i samme sprog som `.plakat__sub`. På de øvrige varer skrives prisen
-ind i `.plakat__sub` sammen med det, der allerede står der.
-
-Husk tre ting: `offers` skal tilbage i de strukturerede data nederst i
-index.html, `.band--kort` kan så beskæres mindre, så hele det trykte kort
-kan ses, og skriveregelen om priser ovenfor skal rettes.
+Hver ret i index.html er en `article class="dish"`. Sæt
+`<div class="dish__price">249</div>` ind som sidste element, og ret `.dish`
+i stil.css fra `grid-template-columns:… 1fr` til `… 1fr auto`. Listerne
+bruger `<span class="row__price">55</span>`. Husk også at sætte `offers`
+tilbage i de strukturerede data nederst i index.html, hvis priserne vises.
