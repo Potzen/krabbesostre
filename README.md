@@ -223,11 +223,27 @@ Mellem historien og menuen ligger `figure class="band band--kort"` med
 billedet af det trykte menukort på bordet. Det skiller de to afsnit og er
 det eneste billede i menudelen.
 
-Billedet er beskåret over retterne med `.band--kort` i stil.css. Det
-fotograferede kort har priser trykt i højre kolonne, og priser står ikke på
-siden. Beskåret sådan ligger kortet som en genstand på bordet, mens selve
-menuen læses i teksten nedenunder. Ændres beskæringen, så tjek på en telefon,
-at tallene ikke kommer med igen.
+Båndet bruger sin egen fil, `billeder/menukort-baand.webp`, som er klippet
+ud af `billeder/menukort.webp`. Der er to hensyn, som trækker hver sin vej:
+ordet **Menukort** skal kunne læses på billedet, og de priser, der står
+trykt i kortets højre kolonne, må ikke kunne læses, for priser står ikke på
+siden.
+
+De to ting kan ikke skilles ad med et vandret snit. Kortet er fotograferet
+skråt, så den øverste pris ligger i næsten samme højde som overskriften. Der
+skæres derfor både fra højre og forneden: udsnittet er x 0 til 730 og y 128
+til 420 af originalen. Den forreste pris begynder ved x 745, og den første
+ret begynder ved y 435, så begge dele ligger uden for filen og bliver aldrig
+sendt til gæstens browser.
+
+Skal båndet vise mere, så klip et nyt udsnit med de tal for øje. Lad være
+med at løse det med `object-position` alene; det kan kun beskære i én retning
+ad gangen og kan derfor ikke holde priserne ude og overskriften inde på
+samme tid.
+
+Filen er 730 gange 292 pixels, og på en bred skærm forstørres den. Fotoet er
+blødt i forvejen, så det ses knap nok, men har I originalfotoet i højere
+opløsning, så læg det i src/ og klip et nyt bånd ud af det.
 
 ## Hvis priserne skal tilbage
 
