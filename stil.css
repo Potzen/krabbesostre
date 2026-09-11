@@ -624,6 +624,12 @@ p:last-child{margin-bottom:0}
   font-size:clamp(1.9rem,4.4vw,3.25rem);
   margin-bottom:clamp(1.5rem,3vw,2.25rem);
 }
+/* Tekstblokken på de enkle sider, fx bordreservationen. Bredden er bundet,
+   så linjerne ikke bliver for lange at læse på en bred skærm. */
+.besked{max-width:52ch}
+.besked p{margin:0 0 1.1rem}
+.besked p:last-child{margin-bottom:0}
+
 /* Arket skalerer efter skærmhøjden, ikke bredden, så overskriften bliver
    stående, når siden åbnes. Hele arket er et link til PDF'en i fuld
    størrelse, for den, der vil læse det små med. */

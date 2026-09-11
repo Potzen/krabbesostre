@@ -5,6 +5,7 @@ op på en hvilken som helst webhost, så virker den.
 
 ```
 index.html          forsiden
+bordreservation/    bookingsiden, indtil et nyt bookingsystem er valgt
 nytaarskasse.html   nytårskassen, skjult indtil videre, se nedenfor
 kontrolrapport.html fødevarekontrollen, lovpligtig visning af smileyrapporten
 stil.css            designsystemet, deles af alle sider
@@ -26,6 +27,7 @@ webhosten, med mappestrukturen bevaret. I alt 41 filer, cirka 4 MB.
 
 ```
 index.html            forsiden
+bordreservation/      hele mappen, ellers giver Book bord en fejlside
 kontrolrapport.html   fødevarekontrollen, lovpligtig
 nytaarskasse.html     skjult, men skal med, så et gemt link stadig virker
 stil.css              designet, uden den ser siden helt forkert ud
@@ -72,8 +74,35 @@ indtil siden hentes frem igen: betalingsflowet i `BETALING_NYTAAR`, kassens
 indhold, som stadig er taget fra menukortet og ikke fra jer, og leveringsdagen,
 der står som "inden nytårsaften".
 
-Klaret: Instagram og Facebook peger på jeres egne profiler, telefonnummeret
-står i footeren, og bookinglinket krabbesostre.dk/bordreservation virker.
+Klaret: Instagram og Facebook peger på jeres egne profiler, og telefonnummeret
+står i footeren.
+
+## Bordreservation
+
+Bookingsystemet er ved at blive skiftet ud, så `bordreservation/index.html` er
+indtil videre en almindelig side, der siger, at I åbner igen sommeren 2027 og
+henviser til tilmeldingen på forsiden.
+
+Den ligger som **mappe** og ikke som `bordreservation.html`, fordi adressen skal
+blive ved med at være `krabbesostre.dk/bordreservation`. Det er den, der står på
+Google, på Facebook og i alt, hvad der er delt indtil nu. Resten af sitet bruger
+`.html` i adresserne; det her er den bevidste undtagelse.
+
+Siden er sat til `noindex`, så den ikke konkurrerer med forsiden på jeres eget
+navn i Google. Den er stadig med i menulinjen og i footeren på alle sider.
+
+Når det nye bookingsystem er på plads, er der to muligheder:
+
+1. Systemet har sin egen adresse: så peges de syv links i `index.html`,
+   `kontrolrapport.html` og `nytaarskasse.html` derhen, og mappen kan slettes
+2. Bookingen skal ligge på jeres eget domæne: så erstattes indholdet i
+   `bordreservation/index.html` med systemets indlejringskode, og `noindex`
+   fjernes
+
+Links til siden står som `bordreservation/`, altså relativt, ikke som den fulde
+adresse. Så virker de både på GitHub-forhåndsvisningen og på det rigtige domæne.
+Den fulde adresse står kun ét sted, i `acceptsReservations` i de strukturerede
+data nederst i index.html, hvor schema.org kræver en hel adresse.
 
 Kontaktadressen er contact@krabbesostre.dk og står i footeren på begge sider
 samt i begge scripts. Bekræft, at det er den rigtige adresse. Telefonnummeret
