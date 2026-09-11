@@ -218,6 +218,22 @@ Vi går efter Business Profile API, fordi alle anmeldelser er en del bedre end
 fem, og fordi der ikke er travlt. Indtil adgangen er godkendt, står afsnittet
 tomt på siden, og det gør ikke noget: er listen tom, vises afsnittet slet ikke.
 
+### Projektet hos Google
+
+    Projektnavn    krabbesostre-anmeldelser
+    Projekt-ID     krabbesostre-anmeldelser
+    Projektnummer  449891936278
+
+Ingen af delene er hemmelige, de giver ikke adgang til noget. De står her,
+så det rigtige projekt kan findes igen, og fordi ansøgningsskemaet spørger om
+nummeret, ikke om navnet. Selve adgangen ligger i hemmelighederne under
+repoets indstillinger og kommer aldrig i en fil.
+
+Ansøgningen sendes gennem https://support.google.com/business/contact/api_default
+med punktet "Application for Basic API Access". Den skal sendes fra den
+konto, der **ejer** virksomhedsprofilen. Ansøgninger fra en konto, der kun er
+administrator, bliver afvist.
+
 ### Hvad der mangler, før det virker
 
 1. Adgang skal søges hos Google fra samme konto som virksomhedsprofilen
