@@ -13,7 +13,12 @@ havner i koden:
   export GOOGLE_API_NOEGLE="..."      nøgle fra Google Cloud, med Places API slået til
   export GOOGLE_PLACE_ID="..."        findes med Googles Place ID Finder
 
-Bemærk: Places API giver højst fem anmeldelser, og Google vælger selv hvilke.
+BEMÆRK: hent() taler i dag med Places API, som giver højst fem anmeldelser.
+Det er besluttet at skifte til Business Profile API, som giver dem alle, så
+snart Google har godkendt adgangen. Se README under Anmeldelser fra Google.
+Kun hent() skal skrives om; byg() og visningen bliver som de er.
+
+Places API giver højst fem anmeldelser, og Google vælger selv hvilke.
 Googles vilkår tillader ikke, at data gemmes permanent, så scriptet skal køre
 regelmæssigt, fx en gang i døgnet. Fryser man anmeldelserne fast for altid,
 er man uden for vilkårene.

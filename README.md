@@ -202,22 +202,44 @@ Afsnittet "Sagt ved bordene" på forsiden bygges af
 `tools/hent_anmeldelser.py` ud fra `anmeldelser.json`. Er listen tom,
 vises afsnittet slet ikke. Skriv aldrig anmeldelser i hånden.
 
-    export GOOGLE_API_NOEGLE="..."     nøgle fra Google Cloud, Places API slået til
-    export GOOGLE_PLACE_ID="..."       findes med Googles Place ID Finder
-    python3 tools/hent_anmeldelser.py
+### Valget af API, besluttet september 2026
 
-Nøglen står kun som miljøvariabel og må aldrig havne i en fil i repoet.
+Der er to veje til de samme anmeldelser, og vi har valgt den anden:
 
-Tre ting at holde sig for øje:
+**Places API** koster penge efter et gratis loft, kræver et betalingskort på
+filen, virker med det samme og giver **højst fem anmeldelser**, som Google
+selv vælger.
 
-1. **Places API giver højst fem anmeldelser**, og Google vælger selv hvilke.
-   Skal alle med, kræver det Business Profile API, som skal søges hos Google
-   og bruger login frem for nøgle. Visningen er den samme, så det kan bygges
-   ovenpå senere uden at kaste noget væk.
-2. **Anmeldelserne må ikke fryses fast.** Googles vilkår tillader ikke, at
+**Business Profile API** er gratis uden kort og giver **alle anmeldelser**,
+men adgangen skal søges hos Google og tager fra få dage til flere uger. Den
+bruger login frem for en nøgle.
+
+Vi går efter Business Profile API, fordi alle anmeldelser er en del bedre end
+fem, og fordi der ikke er travlt. Indtil adgangen er godkendt, står afsnittet
+tomt på siden, og det gør ikke noget: er listen tom, vises afsnittet slet ikke.
+
+### Hvad der mangler, før det virker
+
+1. Adgang skal søges hos Google fra samme konto som virksomhedsprofilen
+2. `hent()` i scriptet skal skrives om. Den taler i dag med Places API og skal
+   i stedet hente fra `https://mybusiness.googleapis.com/v4/accounts/*/locations/*/reviews`,
+   som er det eneste sted, anmeldelser findes. Det er bevidst ikke skrevet
+   endnu, for det kan ikke afprøves uden adgang
+3. Login skal fornys automatisk. Det kræver, at projektets samtykkeskærm
+   sættes i produktion, ellers udløber fornyelsesnøglen efter syv dage, og det
+   natlige job går i stå hver uge
+4. Hemmelighederne i repoet skal skifte navn, fra nøgle og Place ID til
+   klient-id, klienthemmelighed og fornyelsesnøgle
+
+Alt det øvrige er færdigt og bliver stående: visningen på forsiden, `--byg`,
+og det natlige job i `.github/workflows/anmeldelser.yml`.
+
+### To ting at holde sig for øje uanset API
+
+1. **Anmeldelserne må ikke fryses fast.** Googles vilkår tillader ikke, at
    deres data gemmes permanent, så scriptet skal køre regelmæssigt, fx en
    gang i døgnet.
-3. **Stjernerne må ikke i de strukturerede data.** Google forbyder, at man
+2. **Stjernerne må ikke i de strukturerede data.** Google forbyder, at man
    mærker anmeldelser op, som man selv har hentet andetsteds fra, og det kan
    udløse en straf. Stjernerne i søgeresultatet sætter Google selv.
 
