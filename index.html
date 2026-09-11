@@ -293,30 +293,19 @@
      sitemap.xml og llms.txt. Se README under Nytårssiden. -->
 
 <!-- ============ SÆSON / CTA ============ -->
+<!-- Tilmeldingen til nyhedsbrevet er taget ud, indtil der er en tjeneste,
+     der kan tage imod adresserne. Feltet lovede en besked, vi ikke kunne give.
+     Skal den tilbage: hent formularen og scriptet frem fra denne fils historik
+     og sæt ENDPOINT til tjenestens adresse. Se README. -->
 <section class="section cta" id="book">
   <div class="wrap">
-    <div class="cta__grid">
-      <div>
-        <p class="eyebrow eyebrow--light rv">Sæson 2027</p>
-        <h2 class="rv">Vi åbner igen til sommer</h2>
-        <p class="cta__lede lede rv">Bordene til næste sæson åbner i foråret. Skriv dig op, så får du besked, før de gør, og før juli er booket.</p>
-      </div>
-
-      <div class="rv">
-        <form class="signup" id="signup" novalidate>
-          <label class="signup__label" for="email">Få besked når bordene åbner</label>
-          <div class="signup__field">
-            <input type="email" id="email" name="email" placeholder="din@mail.dk" required autocomplete="email">
-            <button class="btn btn--light" type="submit">Skriv mig op <span class="arw" aria-hidden="true">→</span></button>
-          </div>
-          <p class="signup__note">Vi skriver et par gange om året, når datoerne er på plads, og når bordene åbner. Ikke andet.</p>
-          <p class="signup__ok" role="status">Tak. Vi skriver, så snart datoerne er på plads.</p>
-        </form>
-
-        <p style="margin-top:2.5rem">
-          <a class="btn btn--outline-light" href="bordreservation/">Book bord nu <span class="arw" aria-hidden="true">→</span></a>
-        </p>
-      </div>
+    <div class="cta__enkel">
+      <p class="eyebrow eyebrow--light rv">Sæson 2027</p>
+      <h2 class="rv">Vi åbner igen til sommer</h2>
+      <p class="cta__lede lede rv">Bordene til næste sæson åbner i foråret. Datoerne kommer her på siden og på Instagram og Facebook, så snart de er på plads.</p>
+      <p class="rv" style="margin-top:clamp(2rem,4vw,2.75rem)">
+        <a class="btn btn--outline-light" href="bordreservation/">Bordreservation <span class="arw" aria-hidden="true">→</span></a>
+      </p>
     </div>
   </div>
 </section>
@@ -581,42 +570,6 @@
     });
   }
 
-  /* Tilmelding.
-     Sæt ENDPOINT til jeres nyhedsbrevssystem (fx Mailchimp/MailerLite form-action).
-     Er den tom, åbnes gæstens mailprogram i stedet, så ingen tilmelding går tabt. */
-  var ENDPOINT = "";
-  var MAIL_TO  = "contact@krabbesostre.dk";
-
-  var form = document.getElementById("signup");
-  if (form) {
-    form.addEventListener("submit", function(ev){
-      ev.preventDefault();
-      var input = form.querySelector("input[type=email]");
-      if (!input.value || input.validity.typeMismatch || input.value.indexOf("@") < 0) {
-        input.focus();
-        input.setCustomValidity("Skriv venligst en gyldig mailadresse");
-        input.reportValidity();
-        return;
-      }
-      input.setCustomValidity("");
-
-      if (ENDPOINT) {
-        var data = new FormData(form);
-        fetch(ENDPOINT, {method:"POST", body:data, mode:"no-cors"})
-          .then(done).catch(done);
-      } else {
-        window.location.href = "mailto:" + MAIL_TO +
-          "?subject=" + encodeURIComponent("Skriv mig op til sæson 2027") +
-          "&body=" + encodeURIComponent("Skriv mig gerne op på ventelisten: " + input.value);
-        done();
-      }
-
-      function done(){
-        form.classList.add("is-done");
-        input.value = "";
-      }
-    });
-  }
 })();
 </script>
 </body>

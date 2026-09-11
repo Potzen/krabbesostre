@@ -66,8 +66,16 @@ uden beløb.
 
 ## Skal udfyldes før den går live
 
-1. Tilmelding på forsiden: sæt jeres formular-URL ind i `ENDPOINT` nederst i
-   index.html. Så længe den er tom, åbner knappen gæstens mailprogram.
+Nyhedsbrevet er taget af siden, indtil der er en tjeneste, der kan tage imod
+adresserne. Feltet stod nederst i afsnittet "Vi åbner igen til sommer" og lovede
+gæsten besked, som ingen kunne give, fordi mailadresserne ingen steder blev
+gemt. Afsnittet er nu én centreret spalte med en henvisning til bordreservation.
+
+Skal det tilbage, så hent formularen, scriptet og `.signup`-reglerne frem fra
+historikken og sæt `ENDPOINT` til tjenestens adresse, fx Mailchimp eller
+MailerLite. Bemærk at `.signup`-reglerne **stadig står i stil.css**, fordi
+nytårssidens bestillingsformular bruger de samme klasser. Dem skal der ikke
+røres ved.
 
 Nytårskassen er sat på pause, så de tre punkter, der hørte til den, venter,
 indtil siden hentes frem igen: betalingsflowet i `BETALING_NYTAAR`, kassens

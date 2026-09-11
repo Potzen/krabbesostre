@@ -550,13 +550,14 @@ p:last-child{margin-bottom:0}
    ============================================================ */
 .cta{background:var(--ink);color:var(--paper);padding-bottom:clamp(3rem,6vw,5rem)}
 .cta h2{color:var(--paper)}
-.cta__grid{
-  display:grid;gap:clamp(2.5rem,5vw,5rem);
-  grid-template-columns:1fr;align-items:start;
-}
-@media (min-width:900px){.cta__grid{grid-template-columns:1.1fr 1fr}}
-.cta__lede{color:rgba(246,242,233,.82);max-width:38ch;margin-top:clamp(1.5rem,3vw,2rem)}
+/* Én spalte, centreret. Var to spalter, dengang tilmeldingen til
+   nyhedsbrevet stod i den højre. Reglerne for .signup er fjernet sammen
+   med formularen og kan hentes frem fra historikken, hvis den skal tilbage. */
+.cta__enkel{max-width:46ch;margin-inline:auto;text-align:center}
+.cta__lede{color:rgba(246,242,233,.82);margin-top:clamp(1.5rem,3vw,2rem)}
 
+/* Formularens regler bliver liggende: nytårssidens bestillingsformular
+   bruger de samme klasser, se .bestil .signup nederst i filen. */
 .signup{margin-top:2rem}
 .signup__label{
   display:block;
