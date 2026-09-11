@@ -19,9 +19,38 @@ src/                rå kildebilleder til tools/build_images.py (indgår ikke i 
 tools/              build_images.py, som klargør billeder til billeder/
 ```
 
-Kun `index.html`, `nytaarskasse.html`, `stil.css`, `billeder/`, `fonts/` og
-`licenser/` skal lægges op på webhosten. `src/` og `tools/` er
-arbejdsredskaber til jer/os, ikke en del af den offentlige side.
+## Hvad der skal lægges op på webhosten
+
+Alt herunder lægges i den mappe, hvor den nuværende `index.html` ligger hos
+webhosten, med mappestrukturen bevaret. I alt 41 filer, cirka 4 MB.
+
+```
+index.html            forsiden
+kontrolrapport.html   fødevarekontrollen, lovpligtig
+nytaarskasse.html     skjult, men skal med, så et gemt link stadig virker
+stil.css              designet, uden den ser siden helt forkert ud
+robots.txt            skal ligge i roden, ellers finder robotterne den ikke
+sitemap.xml           samme, den er nævnt i robots.txt
+llms.txt              kort beskrivelse til sprogmodeller
+billeder/             hele mappen
+fonts/                hele mappen, ellers falder skrifterne tilbage til systemets
+dokumenter/           kontrolrapporten som PDF
+licenser/             skriftlicenserne, se nedenfor
+```
+
+Disse skal **ikke** med, de er arbejdsredskaber:
+
+```
+menukort-test.html  de elleve udkast til menuen, kun til jer
+anmeldelser.json    bruges af scriptet, ikke af siden
+README.md           denne fil, også dem i undermapperne
+src/                rå kildebilleder
+tools/              scripts
+```
+
+Store og små bogstaver skal passe præcist. Serveren skelner mellem
+`Billeder` og `billeder`, og et forkert bogstav giver et billede, der ikke
+vises, uden nogen fejlmeddelelse.
 
 ## Skriveregler for siden
 

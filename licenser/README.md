@@ -1,10 +1,22 @@
 # Licenser, der mangler
 
-Begge skrifter (Archivo og Newsreader) bruges under SIL Open Font License og
-skal have deres licenstekst liggende her, fx:
+Begge skrifter bruges under SIL Open Font License 1.1, og licensteksten skal
+følge med, når skrifterne lægges på en webhost. Den mangler stadig. Hent de to
+filer og læg dem her, før siden går live:
 
 - `OFL-archivo.txt`
-- `OFL-newsreader.txt`
+  https://raw.githubusercontent.com/google/fonts/main/ofl/archivo/OFL.txt
+  Copyright 2020 The Archivo Project Authors
+  (https://github.com/Omnibus-Type/Archivo)
 
-Hent teksten fra det sted, du fik skrifterne (fx Google Fonts' repo på
-GitHub), og læg den her.
+- `OFL-newsreader.txt`
+  https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt
+  Copyright 2020 The Newsreader Project Authors
+  (http://github.com/productiontype/Newsreader)
+
+Begge filer er den almindelige OFL 1.1 af 26. februar 2007 med den enkelte
+skrifts copyright-linje øverst. Åbn linket, marker alt, og gem som almindelig
+tekstfil med de navne, der står ovenfor.
+
+Det er et lille punkt, ikke noget der forhindrer siden i at gå i luften, men
+det hører med, når man selv hoster skrifterne.
