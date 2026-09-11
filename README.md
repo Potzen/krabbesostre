@@ -1,7 +1,20 @@
 # Krabbesøstre, hjemmeside
 
-Statisk side. Ingen build, ingen database, ingen cookies. Læg mappens indhold
-op på en hvilken som helst webhost, så virker den.
+Statisk side. Ingen build, ingen database, ingen cookies.
+
+**Siden hostes af GitHub Pages og udgives af sig selv.** Alt, der pushes til
+`claude/github-repo-website-setup-2mur7j`, som er repoets default branch, er
+live på krabbesostre.dk et par minutter senere. Der skal ikke lægges filer op
+nogen steder i hånden.
+
+Domænet er registreret hos one.com, som også står for mailen, men hjemmesiden
+ligger ikke længere der. I one.coms DNS peger både `krabbesostre.dk` og
+`www.krabbesostre.dk` på GitHubs fire adresser, og `CNAME`-filen i roden
+fortæller GitHub, hvilket domæne siden hører til. **`CNAME` må ikke slettes**,
+så falder domænet af.
+
+Skal siden alligevel flyttes til en almindelig webhost en dag, står listen
+over filer længere nede.
 
 ```
 index.html          forsiden
@@ -20,7 +33,7 @@ src/                rå kildebilleder til tools/build_images.py (indgår ikke i 
 tools/              build_images.py, som klargør billeder til billeder/
 ```
 
-## Hvad der skal lægges op på webhosten
+## Hvis siden skal flyttes til en almindelig webhost
 
 Alt herunder lægges i den mappe, hvor den nuværende `index.html` ligger hos
 webhosten, med mappestrukturen bevaret. I alt 41 filer, cirka 4 MB.
@@ -229,10 +242,16 @@ så det rigtige projekt kan findes igen, og fordi ansøgningsskemaet spørger om
 nummeret, ikke om navnet. Selve adgangen ligger i hemmelighederne under
 repoets indstillinger og kommer aldrig i en fil.
 
-Ansøgningen sendes gennem https://support.google.com/business/contact/api_default
-med punktet "Application for Basic API Access". Den skal sendes fra den
-konto, der **ejer** virksomhedsprofilen. Ansøgninger fra en konto, der kun er
-administrator, bliver afvist.
+Ansøgningen er sendt den 11. september 2026 gennem
+https://support.google.com/business/contact/api_default med punktet
+"Application for Basic API Access", fra den konto der ejer
+virksomhedsprofilen.
+
+    Sagsnummer  8-7819000041512
+    Svartid     7 til 10 hverdage ifølge Google
+
+Skal der rykkes, eller skal kvoten senere hæves, bruges samme skema og det
+sagsnummer.
 
 ### Hvad der mangler, før det virker
 
