@@ -1,0 +1,65 @@
+# Henter Google-anmeldelser hver nat og skriver dem ind i index.html.
+#
+# Google tillader ikke, at anmeldelser gemmes permanent, så de skal hentes
+# forfra med jævne mellemrum. Derfor kører den her hver nat frem for at vi
+# henter dem én gang og lader dem stå.
+#
+# To hemmeligheder skal sættes under Settings, Secrets and variables, Actions:
+#   GOOGLE_API_NOEGLE   nøglen fra Google Cloud, med Places API (New) slået til
+#   GOOGLE_PLACE_ID     stedets id, findes med Googles Place ID Finder
+#
+# Mangler de, gør jobbet ingenting og melder ikke fejl. Så kan filen ligge her,
+# indtil nøglen er på plads, uden at sende fejlbeskeder hver nat.
+
+name: Anmeldelser fra Google
+
+on:
+  schedule:
+    - cron: "17 3 * * *"      # hver nat kl. 03:17 UTC, altså uden for spisetid
+  workflow_dispatch:           # og når du selv trykker på knappen
+
+permissions:
+  contents: write
+
+concurrency:
+  group: anmeldelser
+  cancel-in-progress: false
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Er nøglen sat op?
+        id: tjek
+        env:
+          NOEGLE: ${{ secrets.GOOGLE_API_NOEGLE }}
+          PLACE: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: |
+          if [ -z "$NOEGLE" ] || [ -z "$PLACE" ]; then
+            echo "GOOGLE_API_NOEGLE eller GOOGLE_PLACE_ID mangler. Springer over."
+            echo "koer=nej" >> "$GITHUB_OUTPUT"
+          else
+            echo "koer=ja" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Hent anmeldelserne og skriv dem ind
+        if: steps.tjek.outputs.koer == 'ja'
+        env:
+          GOOGLE_API_NOEGLE: ${{ secrets.GOOGLE_API_NOEGLE }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: python3 tools/hent_anmeldelser.py
+
+      - name: Gem, hvis der er kommet noget nyt
+        if: steps.tjek.outputs.koer == 'ja'
+        run: |
+          if git diff --quiet -- index.html anmeldelser.json; then
+            echo "Ingen ændringer, intet at gemme."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html anmeldelser.json
+          git commit -m "Opdater anmeldelser fra Google"
+          git push
