@@ -5,11 +5,11 @@ op på en hvilken som helst webhost, så virker den.
 
 ```
 index.html          forsiden
-nytaarskasse.html   nytårskassen
+nytaarskasse.html   nytårskassen, skjult indtil videre, se nedenfor
 kontrolrapport.html fødevarekontrollen, lovpligtig visning af smileyrapporten
 stil.css            designsystemet, deles af alle sider
 robots.txt          giver alle robotter adgang, også AI, og peger på sitemap
-sitemap.xml         de tre sider, indsendes i Google Search Console
+sitemap.xml         de synlige sider, indsendes i Google Search Console
 llms.txt            kort beskrivelse i almindeligt sprog til sprogmodeller
 dokumenter/         kontrolrapporten som PDF
 billeder/           optimerede WebP billeder
@@ -37,14 +37,11 @@ uden beløb.
 
 1. Tilmelding på forsiden: sæt jeres formular-URL ind i `ENDPOINT` nederst i
    index.html. Så længe den er tom, åbner knappen gæstens mailprogram.
-2. Nytårskassen: `BETALING_NYTAAR` nederst i nytaarskasse.html kan sættes til
-   et Stripe Payment Link eller MobilePay MyShop link. Betalingsflowet er
-   endnu ikke sat op, så feltet står tomt, og bestillingen går gennem
-   formularen og åbner gæstens mailprogram.
-3. Kassens indhold er taget fra menukortet, ikke fra jer. Indholdet er endnu
-   ikke besluttet, så listen skal rettes, og der mangler billeder af kassen.
-4. Leveringsdagen står som "inden nytårsaften". Sæt en konkret dag eller et
-   tidsrum ind, når I ved, hvornår fragtmanden kører.
+
+Nytårskassen er sat på pause, så de tre punkter, der hørte til den, venter,
+indtil siden hentes frem igen: betalingsflowet i `BETALING_NYTAAR`, kassens
+indhold, som stadig er taget fra menukortet og ikke fra jer, og leveringsdagen,
+der står som "inden nytårsaften".
 
 Klaret: Instagram og Facebook peger på jeres egne profiler, telefonnummeret
 står i footeren, og bookinglinket krabbesostre.dk/bordreservation virker.
@@ -54,7 +51,24 @@ samt i begge scripts. Bekræft, at det er den rigtige adresse. Telefonnummeret
 29 43 00 52 står i footeren begge steder og i de strukturerede data på
 forsiden.
 
-## Nytårssiden
+## Nytårssiden, skjult indtil videre
+
+Kassen er ikke aktuel, så siden er taget ud af omløb. Den er **ikke slettet**,
+og alt arbejdet på den står urørt. Fem steder holder den skjult:
+
+1. `nytaarskasse.html` har `<meta name="robots" content="noindex, follow">`
+   øverst, så søgemaskiner lader den være
+2. menupunktet Nytårskasse er ude af menulinjen på forsiden og på
+   kontrolrapporten
+3. det samme punkt er ude af footeren
+4. afsnittet "Havet med hjem" midt på forsiden er taget ud; der står en
+   kommentar i index.html, hvor det stod
+5. siden er ude af `sitemap.xml` og af `llms.txt`
+
+Skal den frem igen, sættes de fem ting tilbage. Selve siden skal der ikke
+røres ved. CSS-reglerne `.spot` og `.nav__nytaar` er med vilje ikke fjernet
+fra stil.css, netop så afsnittet og menupunktet kan sættes tilbage uden andet
+arbejde.
 
 Siden har bevidst et andet lys end forsiden. Restauranten taler i kondenseret
 versal signalskrift på lys bund; nytårskassen taler i graveret antikva på
@@ -159,9 +173,11 @@ i sin lyse tilstand med `class="header is-stuck"` skrevet direkte i HTML.
 Fjernes den klasse, bliver menuen hvid skrift på lyst papir og forsvinder.
 
 Der er med vilje ingen knapper i åbningen. Alt ligger i menulinjen. Bemærk
-at menuen skjuler punkter på små skærme: under 760 pixels vises kun Menu,
-Nytårskasse og Book bord, og under 620 pixels viger ordet Krabbesøstre for
-den lille krabbe, så der bliver plads. Tilføjes et punkt mere til menuen,
+at menuen skjuler punkter på små skærme: under 760 pixels vises kun Menu og
+Book bord, og under 620 pixels viger ordet Krabbesøstre for den lille krabbe,
+så der bliver plads. Den sidste regel stammer fra dengang, Nytårskasse også
+stod i menuen. Nu hvor punktet er væk, er der plads til ordet igen fra cirka
+420 pixels og op, hvis I vil have det frem. Tilføjes et punkt til menuen,
 skal det tjekkes på en telefon, om der stadig er plads.
 
 Delingsbilledet er `billeder/og-logo.jpg`, logoet på papirbunden i 1200
