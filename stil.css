@@ -197,7 +197,11 @@ p:last-child{margin-bottom:0}
 .nav .nav__book:hover{background:currentColor}
 .header:not(.is-stuck) .nav__book:hover{color:var(--ink)}
 .header.is-stuck .nav__book:hover{color:var(--paper)}
-@media (max-width:760px){.nav a:not(.nav__book):not(.nav__menu):not(.nav__nytaar){display:none}}
+/* Historien og Praktisk skjules kun på de allersmalleste skærme. Grænsen lå
+   på 760 pixels, dengang menuen havde fem punkter og Nytårskasse fyldte med.
+   Med fire punkter er der plads fra omkring 360 pixels, altså på alle
+   almindelige telefoner. Måles med alle punkter tvunget frem. */
+@media (max-width:374px){.nav a:not(.nav__book):not(.nav__menu){display:none}}
 /* Paa smaa skaerme viger ordet i menulinjen for logoet lige nedenunder,
    saa der bliver plads til nytaarskassen. Krabben bliver staaende. */
 @media (max-width:620px){
@@ -205,6 +209,13 @@ p:last-child{margin-bottom:0}
   .nav{gap:.9rem}
   .nav a{font-size:.7rem;letter-spacing:.11em}
   .nav .nav__book{padding:.5rem .8rem}
+}
+/* Strammet yderligere på telefon, så alle fire punkter kan være der.
+   Knappen må ikke brække over to linjer, for så bliver menulinjen høj. */
+@media (max-width:480px){
+  .nav{gap:.65rem}
+  .nav a{font-size:.66rem;letter-spacing:.08em}
+  .nav .nav__book{padding:.45rem .65rem;white-space:nowrap}
 }
 
 /* ============================================================

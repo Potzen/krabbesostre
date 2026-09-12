@@ -295,12 +295,19 @@ i sin lyse tilstand med `class="header is-stuck"` skrevet direkte i HTML.
 Fjernes den klasse, bliver menuen hvid skrift på lyst papir og forsvinder.
 
 Der er med vilje ingen knapper i åbningen. Alt ligger i menulinjen. Bemærk
-at menuen skjuler punkter på små skærme: under 760 pixels vises kun Menu og
-Book bord, og under 620 pixels viger ordet Krabbesøstre for den lille krabbe,
-så der bliver plads. Den sidste regel stammer fra dengang, Nytårskasse også
-stod i menuen. Nu hvor punktet er væk, er der plads til ordet igen fra cirka
-420 pixels og op, hvis I vil have det frem. Tilføjes et punkt til menuen,
-skal det tjekkes på en telefon, om der stadig er plads.
+at menuen strammer sig på små skærme. Under 620 pixels viger ordet
+Krabbesøstre for den lille krabbe, og under 480 pixels bliver skrift og
+afstande mindre. **Først under 375 pixels** forsvinder Historien og Praktisk,
+så der kun står Menu og Book bord.
+
+Grænsen lå længe på 760 pixels, altså skjult på alle telefoner. Den stammede
+fra dengang menuen havde fem punkter, hvor Nytårskasse fyldte med. Med fire
+punkter er der plads fra 375 pixels, som er den smalleste iPhone, der er i
+brug. Målt med 30 pixels luft ved 375 og 45 ved 390.
+
+Tilføjes et punkt til menuen igen, skal det måles forfra på en telefon. Det er
+også værd at vide, at ordet Krabbesøstre kan komme frem igen fra omkring 420
+pixels, hvis I vil have det.
 
 Delingsbilledet er `billeder/og-logo.jpg`, logoet på papirbunden i 1200
 gange 630 pixels. Det skal blive ved med at være **JPEG**, ikke WebP:
