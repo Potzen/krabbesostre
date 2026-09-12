@@ -56,7 +56,6 @@ licenser/             skriftlicenserne, se nedenfor
 Disse skal **ikke** med, de er arbejdsredskaber:
 
 ```
-menukort-test.html  de elleve udkast til menuen, kun til jer
 anmeldelser.json    bruges af scriptet, ikke af siden
 README.md           denne fil, også dem i undermapperne
 src/                rå kildebilleder
@@ -339,8 +338,9 @@ Menuen er sat som en plakat: ingen fotos af retterne, navnene sat stort i
 antikva, alt centreret i én smal spalte. Baggrunden er en undersøgelse af,
 at billeder af mad ikke nødvendigvis øger lysten; et foto låser fantasien
 fast på præcis den portion, mens ordet lader gæsten forestille sig sin egen.
-Formen blev valgt blandt elleve udkast på menukort-test.html, hvor de øvrige
-ti stadig ligger, hvis I vil se dem igen eller skifte mening.
+Formen blev valgt blandt elleve udkast på en testside, som er slettet igen,
+da valget var truffet. Skal de ses igen, ligger de i historikken: filen hed
+menukort-test.html og blev fjernet i september 2026.
 
 Hele menuen ligger i `div class="plakat"` i index.html og styles af
 `.plakat*` i stil.css. Retterne er `.plakat__ret` med navn og beskrivelse.
