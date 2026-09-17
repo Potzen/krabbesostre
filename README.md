@@ -198,9 +198,19 @@ Nederst på forsiden ligger et afsnit med strukturerede data. Det er den
 usynlige beskrivelse, Google bruger til at vise åbningstider og kort, og som AI
 læser. Tre ting skal holdes ved lige i det:
 
-1. **Åbningstiderne** står med sæsonens datoer under `openingHoursSpecification`.
-   De skal opdateres, når datoerne for næste sommer er på plads. Det samme gælder
-   teksten i `manifest__fakta` øverst på forsiden og under Praktisk.
+1. **Åbningstiderne er taget ud, indtil datoerne for 2027 er kendt.**
+   `openingHoursSpecification` stod med sæson 2026, 4. juli til 2. august. Den
+   periode er passeret, og en udløbet angivelse siger ingenting om fremtiden.
+   Blokken, der skal sættes tilbage, står som kommentar lige over de
+   strukturerede data nederst i index.html.
+
+   **Sæt den ikke ind uden `validFrom` og `validThrough`.** Så står der, at I
+   har åbent dagligt hele året, og det passer ikke. Indtil videre er det
+   Google-virksomhedsprofilen, der oplyser åbningstiderne, og den er alligevel
+   den, Google lytter mest til.
+
+   Datoerne for 2027 skal **tre steder**, når I kender dem: de strukturerede
+   data, `manifest__fakta` øverst på forsiden, og feltet Sæson under Praktisk.
 2. **Spørgsmål og svar** under Praktisk findes to steder: som synlig tekst og som
    `FAQPage` i de strukturerede data. Retter I det ene, skal I rette det andet,
    ellers står der noget forskelligt til gæsten og til Google.

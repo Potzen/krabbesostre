@@ -192,7 +192,7 @@
       </div>
       <div class="fact">
         <dt>Sæson</dt>
-        <dd>Sommeren 2026:<br>4.&nbsp;juli til 2.&nbsp;august<br><span style="color:var(--muted)">Datoer for 2027 offentliggøres i foråret</span></dd>
+        <dd>Sommeren 2027<br><span style="color:var(--muted)">Datoerne offentliggøres i foråret</span></dd>
       </div>
       <div class="fact">
         <dt>Bord</dt>
@@ -348,6 +348,30 @@
   </div>
 </footer>
 
+<!-- Strukturerede data. JSON kan ikke bære kommentarer, så bemærkningerne
+     står her.
+
+     ÅBNINGSTIDER MANGLER MED VILJE. Her stod openingHoursSpecification med
+     sæson 2026, 4. juli til 2. august. Den periode er passeret, og en udløbet
+     angivelse siger ingenting om fremtiden. Den er taget ud, indtil datoerne
+     for 2027 er kendt. Sæt den tilbage sådan, med de nye datoer:
+
+       "openingHoursSpecification": [
+         {
+           "@type": "OpeningHoursSpecification",
+           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday",
+                         "Friday","Saturday","Sunday"],
+           "opens": "12:00",
+           "closes": "21:00",
+           "validFrom": "2027-MM-DD",
+           "validThrough": "2027-MM-DD"
+         }
+       ],
+
+     Lad være med at sætte den ind uden validFrom og validThrough. Så står der,
+     at I har åbent dagligt hele året, og det passer ikke. Indtil datoerne er
+     på plads, er det Google-virksomhedsprofilen, der oplyser åbningstiderne,
+     og den er alligevel den, Google lytter mest til. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -409,24 +433,6 @@
         "https://www.instagram.com/krabbesostre/",
         "https://www.facebook.com/profile.php?id=61577017515069",
         "https://www.findsmiley.dk/app/1488547"
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "12:00",
-          "closes": "21:00",
-          "validFrom": "2026-07-04",
-          "validThrough": "2026-08-02"
-        }
       ],
       "hasMenu": {
         "@type": "Menu",
