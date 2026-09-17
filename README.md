@@ -207,6 +207,17 @@ læser. Tre ting skal holdes ved lige i det:
 3. **Nytårskassen** er beskrevet som en vare uden pris, fordi prisen ikke er
    fastsat. Når den er det, sættes et `offers`-afsnit ind med pris og valuta.
 
+Sidetitlerne skal holdes under cirka 60 tegn. Både Google og Bing klipper
+længere titler af midt i en sætning. Forsidens titel var 74 tegn og er nu 56.
+De tre andre sider ligger på 41 til 44.
+
+Tre billeder har med vilje tom alt-tekst: de to krabber i menulinjen og
+logoet som vandmærke i footeren. De er pynt, ikke indhold, og er markeret
+med aria-hidden. Bings værktøj melder dem som manglende alt-tekst, men det
+er en falsk alarm: en tom alt-tekst er netop den rigtige måde at fortælle en
+oplæser, at et billede skal springes over. **Sæt ikke alt-tekst på dem**, så
+bliver siden dårligere for blinde, ikke bedre.
+
 Koordinater er bevidst ikke angivet. Adressen er entydig nok til, at Google selv
 finder punktet.
 
