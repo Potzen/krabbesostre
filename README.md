@@ -24,6 +24,7 @@ kontrolrapport.html fødevarekontrollen, lovpligtig visning af smileyrapporten
 stil.css            designsystemet, deles af alle sider
 robots.txt          giver alle robotter adgang, også AI, og peger på sitemap
 sitemap.xml         de synlige sider, indsendes i Google Search Console
+BingSiteAuth.xml    Bings ejerskabsbevis, skal ligge i roden, må ikke slettes
 llms.txt            kort beskrivelse i almindeligt sprog til sprogmodeller
 dokumenter/         kontrolrapporten som PDF
 billeder/           optimerede WebP billeder
@@ -47,6 +48,7 @@ stil.css              designet, uden den ser siden helt forkert ud
 robots.txt            skal ligge i roden, ellers finder robotterne den ikke
 sitemap.xml           samme, den er nævnt i robots.txt
 llms.txt              kort beskrivelse til sprogmodeller
+BingSiteAuth.xml      Bings ejerskabsbevis, skal ligge i roden
 billeder/             hele mappen
 fonts/                hele mappen, ellers falder skrifterne tilbage til systemets
 dokumenter/           kontrolrapporten som PDF
